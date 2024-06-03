@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>Editando refugio</h1>
+<p>Ingrese los nuevos datos:</p>
+</br>
+<div class="editar_refugio">
+    <form action="{{url_for('')}}" method="post">
+        <label for="nombre_refugio">Nombre:</label>
+        <input type="text" id="nombre_refugio" name="fnombre_refugio" placeholder="Nuevo nombre">
+        </br>
+        <label for="direccion_refugio">Direccion:</label>
+        <input type="text" id="direccion_refugio" name="fdireccion_refugio" placeholder="Nueva direccion">
+        </br>
+        <label for="descripcion_refugio">Descripcion:</label>
+        <input type="text" id="descripcion_refugio" name="fdescripcion_refugio" placeholder="Nueva descripcion">
+        </br>
+        <label for="tipo_refugio">Tipo:</label>
+        <input type="text" id="tipo_refugio" name="ftipo_refugio" placeholder="Nuevo tipo">
+        </br>
+        <label for="telefono_refugio">Telefono:</label>
+        <input type="text" id="telefono_refugio" name="ftelefono_refugio" placeholder="Nuevo telefono">
+        </br>
+        <label for="usuario_refugio">Nombre de usuario:</label>
+        <input type="text" id="usuario_refugio" name="fusuario_refugio" placeholder="Nuevo usuario">
+        </br>
+        <label for="foto_refugio">Link para nueva foto:</label>
+        <input type="text" id="foto_refugio" name="ffoto_refugio" placeholder="Nueva foto">
+        </br>
+    </form>
+</div>
+{% endblock %}
