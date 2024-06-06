@@ -145,10 +145,9 @@
 
 
 {% block body %}
-<div class="centered__content">
+<div class=" col-lg-3 col-sm-6 container-fluid d-flex flex-column justify-center-content">
 
-
-<form class="form" action="{{url_for('cargar_refugio')}}" method="post" enctype="multipart/form-data">
+<form class="form " action="{{url_for('cargar_refugio')}}" method="post" enctype="multipart/form-data">
     <p class="title">Agrega tu refugio </p>
     <p class="message">Ingrese sus datos</p>
         <div class="flex">
