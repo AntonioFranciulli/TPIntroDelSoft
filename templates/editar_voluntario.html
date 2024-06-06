@@ -1,26 +1,29 @@
 {% extends 'base.html' %}
 {% block body %}
-<h1>Editando voluntario</h1>
-<p>Ingrese los nuevos datos:</p>
-</br>
-<div class="editar_voluntario">
-    <form action="{{ url_for('edicion_voluntario') }}" method="post"> <!-- meter la función encargada de este html en url_for('') cuando se termine app.py  -->
-        <label for="nombre_voluntario">Nombre:</label>
-        <input type="text" id="nombre_voluntario" name="fnombre_voluntario" placeholder="Nuevo nombre">
-        </br>
-        <label for="puesto_voluntario">Puesto:</label>
-        <input type="text" id="puesto_voluntario" name="fpuesto_voluntario" placeholder="Nuevo puesto">
-        </br>
-        <label for="telefono_voluntario">Telefono:</label>
-        <input type="text" id="telefono_voluntario" name="ftelefono_voluntario" placeholder="Nuevo teléfono">
-        </br>
-        <label for="cuil_voluntario">CUIL:</label>
-        <input type="text" id="cuil_voluntario" name="fcuil_voluntario" placeholder="Nuevo CUIL">
-        </br>
-        <label for="foto_voluntario">Link para nueva foto del voluntario:</label>
-        <input type="text" id="foto_voluntario" name="ffoto_voluntario" placeholder="Nueva foto">
-        </br>
-        <button type="submit">Enviar</button>
+<div class="editar_voluntario container-fluid d-flex flex-column align-items-center">
+    <h1 class="mb-4">Editando voluntario:</h1>
+    <form class="d-flex flex-column" action="{{ url_for('edicion_voluntario') }}" method="post"> <!-- meter la función encargada de este html en url_for('') cuando se termine app.py  -->
+        <div class="mb-2">
+            <label for="nombre_voluntario">Nombre:</label>
+            <input type="text" id="nombre_voluntario" name="fnombre_voluntario" placeholder="Nuevo nombre">
+        </div>
+        <div class="mb-2">
+            <label for="puesto_voluntario">Puesto:</label>
+            <input type="text" id="puesto_voluntario" name="fpuesto_voluntario" placeholder="Nuevo puesto">
+        </div>
+        <div class="mb-2">
+            <label for="telefono_voluntario">Telefono:</label>
+            <input type="text" id="telefono_voluntario" name="ftelefono_voluntario" placeholder="Nuevo teléfono">
+        </div>
+        <div class="mb-2">
+            <label for="cuil_voluntario">CUIL:</label>
+            <input type="text" id="cuil_voluntario" name="fcuil_voluntario" placeholder="Nuevo CUIL">
+        </div>
+        <div class="mb-3">
+            <label for="foto_voluntario">Link para nueva foto del voluntario:</label>
+            <input type="text" id="foto_voluntario" name="ffoto_voluntario" placeholder="Nueva foto">
+        </div>
+        <button class="align-self-end py-2 px-4 border-0 bg-success text-white rounded" type="submit">Enviar</button>
     </form>
 </div>
 {% endblock %}
