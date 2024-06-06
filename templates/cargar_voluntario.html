@@ -1,26 +1,178 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% block head %}
+<style>
+
+.centered__content {
+  padding-left: 500px;
+  margin: auto;
+  transform: scale(1);
+
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 350px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    height: 800px;
+  }
+  
+  .title {
+    font-size: 28px;
+    color:  #07ead3;
+    font-weight: 600;
+    letter-spacing: -1px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+  }
+  
+  .title::before,.title::after {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    left: 0px;
+    background-color:  #07ead3;
+  }
+  
+  .title::before {
+    width: 18px;
+    height: 18px;
+    background-color:  #07ead3;
+  }
+  
+  .title::after {
+    width: 18px;
+    height: 18px;
+    animation: pulse 1s linear infinite;
+  }
+  
+  .message, .signin {
+    color: rgba(88, 87, 87, 0.822);
+    font-size: 14px;
+  }
+  
+  .signin {
+    text-align: center;
+  }
+  
+  .signin a {
+    color:  #07ead3;
+  }
+  
+  .signin a:hover {
+    text-decoration: underline  #07ead3;
+  }
+  
+  .flex {
+    display: flex;
+    width: 100%;
+    gap: 6px;
+  }
+  
+  .form label {
+    position: relative;
+  }
+  
+  .form label .input {
+    width: 100%;
+    padding: 10px 10px 20px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+  }
+  
+  .form label .input + span {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    color: grey;
+    font-size: 0.9em;
+    cursor: text;
+    transition: 0.3s ease;
+  }
+  
+  .form label .input:placeholder-shown + span {
+    top: 15px;
+    font-size: 0.9em;
+  }
+  
+  .form label .input:focus + span,.form label .input:valid + span {
+    top: 30px;
+    font-size: 0.7em;
+    font-weight: 600;
+  }
+  
+  .form label .input:valid + span {
+    color: green;
+  }
+  
+  .submit {
+    border: none;
+    outline: none;
+    background-color:  #07ead3;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    transform: .3s ease;
+  }
+  
+  .submit:hover {
+    background-color: rgb(56, 90, 194);
+  }
+  
+  @keyframes pulse {
+    from {
+      transform: scale(0.9);
+      opacity: 1;
+    }
+  
+    to {
+      transform: scale(1.8);
+      opacity: 0;
+    }
+  }
+</style>
+{% endblock %}
+
+
 {% block body %}
-<h1>Cargando voluntario</h1>
-<p>Ingrese los datos:</p>
-</br>
-<div class="editar_voluntario">
-    <form action="{{ url_for('cargar_voluntario') }}" method="post"> <!-- meter la función encargada de este html en url_for('') cuando se termine app.py  -->
-        <label for="nombre_voluntario">Nombre:</label>
-        <input type="text" id="nombre_voluntario" name="fnombre_voluntario" placeholder="nombre">
-        </br>
-        <label for="puesto_voluntario">Puesto:</label>
-        <input type="text" id="puesto_voluntario" name="fpuesto_voluntario" placeholder="puesto">
-        </br>
-        <label for="telefono_voluntario">Telefono:</label>
-        <input type="text" id="telefono_voluntario" name="ftelefono_voluntario" placeholder="teléfono">
-        </br>
-        <label for="cuil_voluntario">CUIL:</label>
-        <input type="text" id="cuil_voluntario" name="fcuil_voluntario" placeholder="CUIL">
-        </br>
-        <label for="foto_voluntario">Link para nueva foto del voluntario:</label>
-        <input type="text" id="foto_voluntario" name="ffoto_voluntario" placeholder="foto">
-        </br>
-        <button type="submit">Enviar</button>
-    </form>
+<div class="centered__content">
+
+
+<form class="form" action="{{ url_for('cargar_voluntario') }}" method="post" >
+    <p class="title">Sé Voluntario </p>
+    <p class="message">Ingrese sus datos</p>
+        <div class="flex">
+        <label for="nombre_voluntario" >
+            <input class="input" type="text" id="nombre_voluntario" name="fnombre_voluntario" placeholder="Nombre" >
+        </label>
+
+        <label for="apellido_voluntario">
+            <input type="text" id="apellido_voluntario" name="fapellido_voluntario" placeholder="Apellido" class="input">
+        </label>
+    </div>  
+            
+    <label for="telefono_voluntario" >
+        <input type="text" id="telefono_voluntario" name="ftelefono_voluntario" placeholder="Teléfono" class="input">
+    </label> 
+        
+    <label for="cuil_voluntario" >
+        <input type="text" id="cuil_voluntario" name="fcuil_voluntario" placeholder="CUIL" class="input">
+    </label>
+    <label for="foto_voluntario" >
+        <input type="text" id="foto_voluntario" name="ffoto_voluntario" placeholder="Foto"  class="input">
+    </label>
+    <button type="submit">Enviar</button>
+</form>
 </div>
+
 {% endblock %}

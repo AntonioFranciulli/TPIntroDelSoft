@@ -3,15 +3,15 @@
 <style>
 
 .centered__content {
-    width: 17.2%;
-    margin: auto;
-  transform: scale(2);
-  padding: 130px 10px 130px;
+  padding-left: 450px;
+  margin: auto;
+  transform: scale(1);
+
 }
-    .card {
+.card {
   position: relative;
-  width: 300px;
-  height: 200px;
+  width: 500px;
+  height: 350px;
   background-color: #f2f2f2;
   border-radius: 10px;
   display: flex;
@@ -35,10 +35,9 @@
 
 .card__content {
   position: absolute;
-  top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
   padding: 20px;
   box-sizing: border-box;
   background-color: #f2f2f2;
@@ -52,16 +51,16 @@
 }
 
 .card__title {
-  margin: 0;
-  font-size: 24px;
-  color: #333;
+  
+  font-size: 30px;
+  color: #111111;
   font-weight: 700;
 }
 
 .card__subtitle {
-    margin: 14px 0 0;
-  font-size: 14px;
-  color: #333;
+  margin: 14px 0 0;
+  font-size: 25px;
+  color: #111111;
   line-height: 1.2;
 }
 
@@ -71,8 +70,9 @@
 
 .card__description {
   margin: 10px 0 0;
-  font-size: 10px;
+  font-size: 20px;
   line-height: 1.4;
+  color: #111111;
 }
 </style>
 {% endblock %}
@@ -81,11 +81,15 @@
 <div class="centered__content">
   {% for i in range(1) %} <!-- Dejo el for listo para cuando haya que mostrar todos los refugios de la base de datos, en este momento hay uno a modo de prueba -->
   <div class="card">
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgXsG49KJH8tzU4cHndcGJQEt_V4xTNuysk8PcbcmsI14v-rlOkDLxBdOl5WkpTVTViNOKdhENnAE6xCuefRjSMSIk-u2Y9o5IcBF2d3yenFL2xXpQa3ajewKYuhj9Gvj9rB5hbT0HwIlvK/s1600/1.jpg" alt="FIUBA">
+    <img src="https://media.lacapital.com.ar/p/90db6f8482a928b1aa2fd723ea31f14f/adjuntos/203/imagenes/100/071/0100071190/1200x675/smart/image-13png.png" alt="Manos Abiertas Refugio">
     <div class="card__content">
-      <p class="card__title">FIUBA (Facultad)</p>
+      <p class="card__title">Manos Abiertas Refugio</p>
       <p class="card__subtitle">Av. Paseo Colón 850</p>
-      <p class="card__description">La Facultad de Ingeniería es una de las trece unidades funcionales en que se divide la Universidad de Buenos Aires, número 66 en el ranking QS. Se dictan en ella 12 carreras de grado.</p>
+      <p class="card__description">El refugio "Manos Abiertas" abrió sus puertas en 2016 y desde entonces ayuda a quienes mas lo 
+        necesitan. Si necesitás un lugar para dormir esta noche no dudes en venir.</p>
+      <p>Tipo de refugio: Hospedaje por la noche</p>
+      <p>Teléfono: 1234-6789</p>
+      <p>Mail: manosabiertas@example.com</p>
     </div>
   </div>
   {% endfor %}

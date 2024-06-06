@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("base.html")
+    return render_template("feed.html")
 
 @app.errorhandler(400)
 def bad_request(e):
@@ -34,17 +34,12 @@ def about_us():
 
 
 
-@app.route("/detalles_voluntario")
-def voluntarios():
-    return render_template("detalles_voluntario.html")
-
-
 
 @app.route("/voluntario_cargado", methods = ["GET","POST"])
 def cargar_voluntario():
     if request.method == "POST":
         nombre = request.form.get("fnombre_voluntario")
-        puesto = request.form.get("fpuesto_voluntario")
+        apellido = request.form.get("fapellido_voluntario")
         telefono = request.form.get("ftelefono_voluntario")
         cuil = request.form.get("fcuil_voluntario")
         foto = request.form.get("ffoto_voluntario")
