@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+   
    <!-- basic -->
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,7 +32,9 @@
    {% block head %}{% endblock %}
 </head>
 
+
 <body>
+   
    <!-- header section start -->
    <div class="header_section">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -42,19 +45,19 @@
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                <li class="nav-item active">
-                  <a class="nav-link" href="{{url_for('home')}}">Refugios</a>
+                  <a class="nav-link" href="{{url_for('feed')}}">Refugios</a>
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="{{url_for('home')}}">Mapa</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="{{url_for('home')}}">Agregar refugio</a>
+                  <a class="nav-link" href="{{url_for('cargar_refugio')}}">Agregar refugio</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="{{url_for('home')}}">Sobre Nosotros</a>
+                  <a class="nav-link" href="{{url_for('about_us')}}">Sobre Nosotros</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="{{url_for('home')}}">Voluntariado</a>
+                  <a class="nav-link" href="{{url_for('cargar_voluntario')}}">Voluntariado</a>
                </li>
             </ul>
          </div>
@@ -67,19 +70,12 @@
          <div class="row">
             <div class="col-lg-3 col-sm-6">
                <div class="footer_logo"><a href="{{url_for('home')}}"><img src="{{url_for('static', filename='images/callesolidaria.png')}}"></a></div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
                <h1 class="adderss_text">Contactanos</h1>
                <div class="map_icon"><img src="{{url_for('static', filename='images/call-icon.png')}}"><span class="paddlin_left_0">+1140507897</span></div>
                <div class="map_icon"><img src="{{url_for('static', filename='images/mail-icon.png')}}"><span class="paddlin_left_0">callesolidaria@gmail.com</span></div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-               <h1 class="adderss_text">Links Útiles</h1>
-               <div class="social_icon">
-                  <ul>
-                     <li><a href="#"><img src="{{url_for('static', filename='images/fb-icon.png')}}"></a></li>
-                     <li><a href="#"><img src="{{url_for('static', filename='images/twitter-icon.png')}}"></a></li>
-                     <li><a href="#"><img src="{{url_for('static', filename='images/instagram-icon.png')}}"></a></li>
-                  </ul>
-               </div>
+               
             </div>
             <div class="col-lg-3 col-sm-6">
                <h1 class="adderss_text">Novedades</h1>
