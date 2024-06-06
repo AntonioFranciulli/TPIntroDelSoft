@@ -4,7 +4,7 @@
 <p>Ingrese los nuevos datos:</p>
 </br>
 <div class="editar_voluntario">
-    <form action="{{ url_for('ref') }}" method="post"> <!-- meter la función encargada de este html en url_for('') cuando se termine app.py  -->
+    <form action="{{ url_for('edicion_voluntario') }}" method="post"> <!-- meter la función encargada de este html en url_for('') cuando se termine app.py  -->
         <label for="nombre_voluntario">Nombre:</label>
         <input type="text" id="nombre_voluntario" name="fnombre_voluntario" placeholder="Nuevo nombre">
         </br>
