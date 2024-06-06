@@ -39,7 +39,7 @@ def about_us():
 def cargar_voluntario():
     if request.method == "POST":
         nombre = request.form.get("fnombre_voluntario")
-        apellido = request.form.get("fapellido_voluntario")
+        apellido = request.form.get("ftipo_voluntario")
         telefono = request.form.get("ftelefono_voluntario")
         cuil = request.form.get("fcuil_voluntario")
         foto = request.form.get("ffoto_voluntario")
