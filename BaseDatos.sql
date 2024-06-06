@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS refugios (
     descripcion VARCHAR(50),
     tipo_refugio VARCHAR(50),
     telefono VARCHAR(20),
+    link_foto VARCHAR(200),
     lista_voluntarios VARCHAR(2000),
     PRIMARY KEY(ID_refugio)
 
