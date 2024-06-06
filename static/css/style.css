@@ -146,7 +146,7 @@ img {
     width: 100%;
     float: left;
     background-color: #b3f7ef;
-    height: 100px;
+    height: auto;
 }
 
 .logo {
@@ -191,17 +191,17 @@ img {
     bottom: 0;
     background-color: #343232;
     padding-left: 240px;
-    height: 100px;
+    height: auto;
 }
 
 .footer_logo {
-    width: 180px;
+    width: auto;
     padding-top: 0;
 }
 
 .adderss_text {
     float: left;
-    font-size: 15px;
+    font-size: auto;
     color: #ffffff;
     padding-top: 5px;
 }
@@ -209,7 +209,7 @@ img {
 .map_icon {
     width: 100%;
     float: left;
-    font-size: 15px;
+    font-size: auto;
     color: #d6d6d6;
 }
 
@@ -220,7 +220,7 @@ img {
 
 
 .subscribe_bt {
-    width: 140px;
+    width: auto;
     float: left;
     margin-top: 5px;
 }
