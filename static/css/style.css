@@ -153,7 +153,6 @@ a,
 
 img {
     max-width: 100%;
-    height: auto;
 }
 
  :focus {
@@ -218,7 +217,7 @@ button {
 .header_section {
     width: 100%;
     float: left;
-    background-image: url(../images/banner-bg.png);
+    background-color: #b3f7ef;
     height: auto;
     background-size: 100%;
     padding: 10px 0px 25px 0px;
@@ -226,8 +225,9 @@ button {
 }
 
 .logo {
-    width: 42%;
+    width: 15%;
     float: left;
+    padding-left: 0px;
 }
 
 .bg-light {
@@ -239,16 +239,22 @@ button {
     padding-left: 20px;
     color: #272a2a;
     font-size: 18px;
+    justify-content: space-around;
 }
 .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
-    color: #15e4d0;
+    color: #07ead3;
+    justify-content: space-around;
 }
 
 .navbar {
+    display: flex;
     padding: .5rem 70px;
+    justify-content: space-around;
+    padding-left: 230px;
 }
 .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
-    color: #15e4d0;
+    color: #0cf7e0;
+    justify-content: space-around;
 }
 
 .banner_section {
@@ -257,11 +263,6 @@ button {
     padding-bottom: 105px;
 }
 
-.images_1 {
-    width: 80%;
-    float: right;
-    padding-top: 50px;
-}
 
 .banner_taital {
     width: 100%;
@@ -495,16 +496,7 @@ button {
     background-color: #252525;
 }
 
-.knowledge_section {
-    width: 100%;
-    float: left;
-    background-image: url(../images/knowledge-bg.png);
-    background-size: 100%;
-    height: auto;
-    background-repeat: no-repeat;
-    padding-top: 180px;
-    padding-bottom: 240px;
-}
+
 
 .knowledge_main {
     width: 100%;
@@ -678,13 +670,7 @@ button {
     float: left;
 }
 
-.diabetes_text {
-    width: 70%;
-    float: left;
-    font-size: 30px;
-    color: #040101;
-    font-weight: 500;
-}
+
 
 .contact_box {
     width: 100%;
@@ -748,53 +734,6 @@ button {
     background-color: #252525;
 }
 
-.client_section {
-    width: 100%;
-    float: left;
-    padding-bottom: 90px;
-}
-
-.client_taital {
-    width: 100%;
-    float: left;
-    font-size: 40px;
-    text-align: center;
-    color: #111010;
-    font-weight: bold;
-}
-
-.client_text {
-    width: 100%;
-    float: left;
-    font-size: 16px;
-    color: #444443;
-    text-align: center;
-    margin: 0px;
-}
-
-.client_section_2 {
-    width: 100%;
-    float: left;
-    padding-top: 60px;
-}
-
-.client_left {
-    width: 40%;
-    float: left;
-}
-
-.client_right {
-    width: 60%;
-    float: left;
-    padding-top: 100px;
-}
-
-.client_img {
-    width: 80%;
-    margin: 0 auto;
-    text-align: center;
-    display: block;
-}
 
 .distracted_text {
     width: 100%;
@@ -805,73 +744,29 @@ button {
     text-transform: uppercase;
 }
 
-.lorem_text {
-    width: 100%;
-    float: left;
-    font-size: 16px;
-    color: #444443;
-    margin: 0px;
-}
 
-.quote_icon {
-    width: 100%;
-    float: left;
-    padding-top: 20px;
-}
-
-#my_slider .carousel-control-prev:hover,
-#my_slider .carousel-control-next:hover,
-#my_slider .carousel-control-prev:focus,
-#my_slider .carousel-control-next:focus {
-    background-color: #19e9d9;
-    color: #ffffff;
-}
-
-#my_slider a.carousel-control-next {
-    position: absolute;
-    left: 490px;
-    top: 70%;
-    background-color: #19e9d9;
-    color: #ffffff;
-}
-
-#my_slider a.carousel-control-prev {
-    position: absolute;
-    left: 490px;
-    top: 84%;
-    background-color: #252525;
-}
-
-#my_slider .carousel-control-prev,
-#my_slider .carousel-control-next {
-    width: 65px;
-    height: 65px;
-    background-color: #252525;
-    opacity: 1;
-    font-size: 30px;
-    color: #ffffff;
-}
 
 .footer_section {
+    padding: 0.5em 0; /* Ajusta el padding para reducir el tamaño del footer */
+    font-size: 0.9em; /* Reduce el tamaño de la fuente si es necesario */
+    position: fixed; /* Mantiene el footer en la parte inferior de la página */
     width: 100%;
-    float: left;
-    background-color: #252525;
-    height: auto;
-    padding-bottom: 50px;
-    box-shadow: 0px 24px 19px -1px #222223;
-    position: relative;
+    bottom: 0;
+    background-color: #343232;
+    padding-left: 240px;
+    padding-top: 20px;
+
 }
 
 .footer_logo {
-    width: 80%;
+    width: 70%;
     float: left;
     padding: 0px 0px 30px 0px;
 }
 
 .adderss_text {
-    width: 100%;
     float: left;
-    font-size: 24px;
+    font-size: 22px;
     color: #ffffff;
     padding-bottom: 30px;
 }
@@ -886,20 +781,6 @@ button {
 
 .paddlin_left_0 {
     padding-left: 15px;
-}
-
-.hiphop_text_1 {
-    width: 90%;
-    color: #d6d6d6;
-    font-size: 16px;
-    margin-left: 0px;
-}
-
-.Useful_text {
-    width: 50%;
-    color: #d6d6d6;
-    font-size: 16px;
-    margin-left: 0px;
 }
 
 .Enter_text {
@@ -954,12 +835,10 @@ input.Enter_text::placeholder {
     width: 100%;
     float: left;
     background-color: #252525;
-    height: auto;
+    height: 20%;
 }
 
 .copyright_text {
-    width: 100%;
-    float: left;
     font-size: 16px;
     margin-left: 0px;
     color: #fff;
