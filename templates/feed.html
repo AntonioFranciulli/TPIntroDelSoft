@@ -78,8 +78,8 @@
 {% endblock %}
 
 {% block body %}
-<div class="container-fluid d-flex justify-content-center">
-  {% for i in range(1) %} <!-- Dejo el for listo para cuando haya que mostrar todos los refugios de la base de datos, en este momento hay uno a modo de prueba -->
+{% for i in range(1) %} <!-- Dejo el for listo para cuando haya que mostrar todos los refugios de la base de datos, en este momento hay uno a modo de prueba -->
+<a href="{{url_for('detalles_refugio')}}"><div class="container-fluid d-flex justify-content-center">
   <div class="card">
     <img src="https://media.lacapital.com.ar/p/90db6f8482a928b1aa2fd723ea31f14f/adjuntos/203/imagenes/100/071/0100071190/1200x675/smart/image-13png.png" alt="Manos Abiertas Refugio">
     <div class="card__content">
@@ -93,5 +93,5 @@
     </div>
   </div>
   {% endfor %}
-</div>
+</div></a>
 {% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<main class="detalle-vol container-fluid d-flex justify-content-center my-4">
+  <div class="col-lg-6 col-10 d-flex flex-column">
+    <div class="refugio_header d-flex justify-content-between w-100 pr-4 mb-3">
+      <h1>Refugio: Manos Abiertas</h1>
+      <a href="https://google.com/maps/search/?api=1&query=paseo+colon+850" target="_blank">
+        <button class="px-3 py-2 rounded border border-primary bg-primary text-white">¿Cómo ir?</button>
+      </a>
+      <a href="{{url_for('edicion_refugio')}}" target="_blank">
+        <button class="px-3 py-2 rounded border border-primary bg-primary text-white">Editar</button>
+      </a>
+    </div>
+    <h3>El refugio "Manos Abiertas" abrió sus puertas en 2016 y desde entonces ayuda a quienes mas lo 
+      necesitan. Si necesitás un lugar para dormir esta noche no dudes en venir.
+    </h3>
+    <section class="w-100 mb-4">
+      <img class="img-fluid img-thumbnail"
+        src="https://media.lacapital.com.ar/p/90db6f8482a928b1aa2fd723ea31f14f/adjuntos/203/imagenes/100/071/0100071190/1200x675/smart/image-13png.png"
+        alt="Nombre de la persona"
+        style="width: 100%; height: auto; border-radius: 4px;"
+        />
+    </section>
+    <p class="m-0 mb-2"
+      style="font-size: 18px; color: black;"
+      >
+      Tipo de refugio: Hospedaje por la noche</p>
+    <h4 style="font-size: 18px;">Contacto:</h4>
+    <ul class="pl-3" style="font-size: 16px; color: black;">
+      <li>Teléfono: 1234-6789</li>
+      <li>Dirección: Paseo Colón 850</li>
+      <li class="fs-4">Mail: manosabiertas@example.com</li>
+      <h4 style="font-size: 18px;">Voluntarios:</h4>
+      <li><a href="{{url_for('detalles_refugio')}}">Jhon Doe</a></li>
+    </ul>
+  </div>
+</main>
+{% endblock %}
