@@ -43,12 +43,10 @@ def cargar_voluntario():
         telefono = request.form.get("ftelefono_voluntario")
         cuil = request.form.get("fcuil_voluntario")
         foto = request.form.get("ffoto_voluntario")
-        return redirect(url_for("confirmar_voluntario"))
+        return redirect(url_for("feed.html"))
     return render_template("cargar_voluntario.html")
 
-@app.route("/voluntario_confirmado")
-def confirmar_voluntario():
-    return render_template("confirmacion_voluntario.html")
+
 
 @app.route("/edicion_refugio",methods = ["GET","POST"])
 def edicion_refugio():
@@ -60,7 +58,7 @@ def edicion_refugio():
         telefono = request.form.get("ftelefono_refugio")
         usuario = request.form.get("fusuario_refugio")
         foto = request.form.get("ffoto_refugio")
-        return render_template("confirmacion_refugio.html")
+        return render_template("detalles_refugio.html")
     return render_template("editar_refugio.html")
 
 @app.route("/edicion_voluntario", methods = ["GET","POST"])
@@ -71,8 +69,12 @@ def edicion_voluntario():
         telefono = request.form.get("ftelefono_voluntario")
         cuil = request.form.get("fcuil_voluntario")
         foto = request.form.get("ffoto_voluntario")
-        return render_template("confirmacion_voluntario.html")
+        return render_template("detalles_voluntario.html")
     return render_template("editar_voluntario.html")
+
+@app.route("/detalles_voluntario")
+def detalles_voluntario():
+    return render_template("detalles_voluntario.html")
 
 @app.route("/detalles_refugio")
 def detalles_refugio():
@@ -91,7 +93,7 @@ def cargar_refugio():
         telefono = request.form.get("telefono")
         imagen = request.form.get("imagen")
         descripcion = request.form.get("descripcion")
-        return render_template("confirmacion_refugio.html")
+        return render_template("feed.html")
     return render_template("cargar_refugio.html")
 
 
