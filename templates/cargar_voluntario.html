@@ -13,12 +13,9 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-width: 350px;
     background-color: #fff;
     padding: 20px;
     border-radius: 20px;
-    position: relative;
-    height: 800px;
   }
   
   .title {
@@ -145,39 +142,38 @@
 
 
 {% block body %}
-<div class="col-lg-3 col-sm-6 container-fluid d-flex justify-center-content">
-
-
-<form class="form" action="{{ url_for('cargar_voluntario') }}" method="post" >
-    <p class="title">Sé Voluntario </p>
-    <p class="message">Ingrese sus datos</p>
-        <div class="flex">
-        <label for="nombre_voluntario" >
-            <input class="input" type="text" id="nombre_voluntario" name="fnombre_voluntario" placeholder="Nombre" >
-        </label>
-
-        <label for="tipo_voluntario">
-            <input type="text" id="tipo_voluntario" name="ftipo_voluntario" placeholder="Voluntariado para:" class="input">
-        </label>
-    </div>  
+<div class="d-flex justify-content-center">
+  <div class="col-lg-6 col-12 d-flex flex-column align-items-center">
+    <form class="form" action="{{ url_for('cargar_voluntario') }}" method="post" >
+        <p class="title">Sé Voluntario </p>
+            <div class="flex">
+            <label for="nombre_voluntario" >
+                <input class="input" type="text" id="nombre_voluntario" name="fnombre_voluntario" placeholder="Nombre" >
+            </label>
+  
+            <label for="tipo_voluntario">
+                <input type="text" id="tipo_voluntario" name="ftipo_voluntario" placeholder="Voluntariado para:" class="input">
+            </label>
+        </div>  
+                
+        <label for="telefono_voluntario" >
+            <input type="text" id="telefono_voluntario" name="ftelefono_voluntario" placeholder="Teléfono" class="input">
+        </label> 
             
-    <label for="telefono_voluntario" >
-        <input type="text" id="telefono_voluntario" name="ftelefono_voluntario" placeholder="Teléfono" class="input">
-    </label> 
-        
-    <label for="cuil_voluntario" >
-        <input type="text" id="cuil_voluntario" name="fcuil_voluntario" placeholder="CUIL" class="input">
-    </label>
-    <label for="foto_voluntario" >
-        <input type="text" id="foto_voluntario" name="ffoto_voluntario" placeholder="Foto"  class="input">
-    </label>
-    <button type="submit" onclick="showAlert()">Crear</button>
-    <script>
-      function showAlert() {
-        alert("Voluntario cargado!");
-      }
-    </script>
-</form>
+        <label for="cuil_voluntario" >
+            <input type="text" id="cuil_voluntario" name="fcuil_voluntario" placeholder="CUIL" class="input">
+        </label>
+        <label for="foto_voluntario" >
+            <input type="text" id="foto_voluntario" name="ffoto_voluntario" placeholder="Link a su foto de perfil"  class="input">
+        </label>
+        <button class="py-2 bg-success border-0 rounded text-white" type="submit" onclick="showAlert()">Crear</button>
+        <script>
+          function showAlert() {
+            alert("Voluntario cargado!");
+          }
+        </script>
+    </form>
+  </div>
 </div>
 
 {% endblock %}

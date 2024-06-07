@@ -12,12 +12,9 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-width: 350px;
     background-color: #fff;
     padding: 20px;
     border-radius: 20px;
-    position: relative;
-    height: 800px;
   }
 
   .title {
@@ -147,41 +144,41 @@
 
 
 {% block body %}
-<div class=" col-lg-3 col-sm-6 container-fluid d-flex flex-column justify-center-content">
-
-  <form class="form " action="{{url_for('cargar_refugio')}}" method="post" enctype="multipart/form-data">
-    <p class="title">Agrega tu refugio </p>
-    <p class="message">Ingrese sus datos</p>
-    <div class="flex">
-      <label for="nombre_refugio">
-        <input type="text" id="nombre" name="nombre" placeholder="Nombre" required class="input">
+<div class="d-flex justify-content-center">
+  <div class="col-lg-6 col-12 d-flex flex-column align-items-center">
+    <form class="form" action="{{url_for('cargar_refugio')}}" method="post" enctype="multipart/form-data">
+      <p class="title">Agrega tu refugio </p>
+      <div class="flex">
+        <label for="nombre_refugio">
+          <input type="text" id="nombre" name="nombre" placeholder="Nombre" required class="input">
+        </label>
+  
+        <label for="tipo_refugio">
+          <input type="text" id="tipo" name="tipo" placeholder="Tipo de refugio" required class="input">
+        </label>
+      </div>
+  
+      <label for="Direccion">
+        <input type="text" id="direccion" name="direccion" placeholder="Direccción" required class="input">
       </label>
-
-      <label for="tipo_refugio">
-        <input type="text" id="tipo" name="tipo" placeholder="Tipo de refugio" required class="input">
+  
+      <label for="telefono">
+        <input type="number" id="telefono" name="telefono" placeholder="Teléfono" required class="input">
       </label>
-    </div>
-
-    <label for="Direccion">
-      <input type="text" id="direccion" name="direccion" placeholder="Direccción" required class="input">
-    </label>
-
-    <label for="telefono">
-      <input type="number" id="telefono" name="telefono" placeholder="Teléfono" required class="input">
-    </label>
-    <label for="imagen">
-      <input type="file" id="imagen" name="imagen" placeholder="Imagen" accept="image/*" required class="input">
-    </label>
-    <label for="descripcion">
-      <input type="text" id="descripcion" name="imagen" placeholder="Descripción" class="input">
-    </label>
-    <button type="submit" onclick="showAlert()">Crear</button>
-    <script>
-      function showAlert() {
-        alert("Refugio cargado!");
-      }
-    </script>
-  </form>
+      <label for="imagen">
+        <input type="text" id="imagen" name="imagen" placeholder="Link de la imagen" required class="input" >
+      </label>
+      <label for="descripcion">
+        <input type="text" id="descripcion" name="imagen" placeholder="Descripción" class="input">
+      </label>
+      <button class="py-2 bg-success border-0 rounded text-white" type="submit" onclick="showAlert()">Crear</button>
+      <script>
+        function showAlert() {
+          alert("Refugio cargado!");
+        }
+      </script>
+    </form>
+  </div>
 </div>
 
 {% endblock %}
