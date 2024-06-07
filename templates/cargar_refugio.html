@@ -1,15 +1,14 @@
 {% extends "base.html" %}
 {% block head %}
 <style>
+  .centered__content {
+    padding-left: 500px;
+    margin: auto;
+    transform: scale(1);
 
-.centered__content {
-  padding-left: 500px;
-  margin: auto;
-  transform: scale(1);
+  }
 
-}
-
-.form {
+  .form {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -20,10 +19,10 @@
     position: relative;
     height: 800px;
   }
-  
+
   .title {
     font-size: 28px;
-    color:  #07ead3;
+    color: #07ead3;
     font-weight: 600;
     letter-spacing: -1px;
     position: relative;
@@ -31,56 +30,58 @@
     align-items: center;
     padding-left: 30px;
   }
-  
-  .title::before,.title::after {
+
+  .title::before,
+  .title::after {
     position: absolute;
     content: "";
     height: 16px;
     width: 16px;
     border-radius: 50%;
     left: 0px;
-    background-color:  #07ead3;
+    background-color: #07ead3;
   }
-  
+
   .title::before {
     width: 18px;
     height: 18px;
-    background-color:  #07ead3;
+    background-color: #07ead3;
   }
-  
+
   .title::after {
     width: 18px;
     height: 18px;
     animation: pulse 1s linear infinite;
   }
-  
-  .message, .signin {
+
+  .message,
+  .signin {
     color: rgba(88, 87, 87, 0.822);
     font-size: 14px;
   }
-  
+
   .signin {
     text-align: center;
   }
-  
+
   .signin a {
-    color:  #07ead3;
+    color: #07ead3;
   }
-  
+
   .signin a:hover {
-    text-decoration: underline  #07ead3;
+    text-decoration: underline #07ead3;
   }
-  
+
   .flex {
     display: flex;
     width: 100%;
     gap: 6px;
   }
-  
+
   .form label {
     position: relative;
   }
-  
+
   .form label .input {
     width: 100%;
     padding: 10px 10px 20px 10px;
@@ -88,8 +89,8 @@
     border: 1px solid rgba(105, 105, 105, 0.397);
     border-radius: 10px;
   }
-  
-  .form label .input + span {
+
+  .form label .input+span {
     position: absolute;
     left: 10px;
     top: 15px;
@@ -98,43 +99,44 @@
     cursor: text;
     transition: 0.3s ease;
   }
-  
-  .form label .input:placeholder-shown + span {
+
+  .form label .input:placeholder-shown+span {
     top: 15px;
     font-size: 0.9em;
   }
-  
-  .form label .input:focus + span,.form label .input:valid + span {
+
+  .form label .input:focus+span,
+  .form label .input:valid+span {
     top: 30px;
     font-size: 0.7em;
     font-weight: 600;
   }
-  
-  .form label .input:valid + span {
+
+  .form label .input:valid+span {
     color: green;
   }
-  
+
   .submit {
     border: none;
     outline: none;
-    background-color:  #07ead3;
+    background-color: #07ead3;
     padding: 10px;
     border-radius: 10px;
     color: #fff;
     font-size: 16px;
     transform: .3s ease;
   }
-  
+
   .submit:hover {
     background-color: rgb(56, 90, 194);
   }
-  
+
   @keyframes pulse {
     from {
       transform: scale(0.9);
       opacity: 1;
     }
-  
+
     to {
       transform: scale(1.8);
       opacity: 0;
@@ -147,34 +149,39 @@
 {% block body %}
 <div class=" col-lg-3 col-sm-6 container-fluid d-flex flex-column justify-center-content">
 
-<form class="form " action="{{url_for('cargar_refugio')}}" method="post" enctype="multipart/form-data">
+  <form class="form " action="{{url_for('cargar_refugio')}}" method="post" enctype="multipart/form-data">
     <p class="title">Agrega tu refugio </p>
     <p class="message">Ingrese sus datos</p>
-        <div class="flex">
-        <label for="nombre_refugio" >
-            <input type="text" id="nombre" name="nombre" placeholder="Nombre" required class="input" >
-        </label>
+    <div class="flex">
+      <label for="nombre_refugio">
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre" required class="input">
+      </label>
 
-        <label for="tipo_refugio">
-            <input type="text" id="tipo" name="tipo" placeholder = "Tipo de refugio" required class="input">
-        </label>
-    </div>  
-            
-    <label for="Direccion" >
-        <input type="text" id="direccion" name="direccion" placeholder = "Direccción" required class="input">
-    </label> 
-        
-    <label for="telefono" >
-        <input  type = "number" id="telefono" name="telefono" placeholder="Teléfono" required class="input">
+      <label for="tipo_refugio">
+        <input type="text" id="tipo" name="tipo" placeholder="Tipo de refugio" required class="input">
+      </label>
+    </div>
+
+    <label for="Direccion">
+      <input type="text" id="direccion" name="direccion" placeholder="Direccción" required class="input">
+    </label>
+
+    <label for="telefono">
+      <input type="number" id="telefono" name="telefono" placeholder="Teléfono" required class="input">
     </label>
     <label for="imagen">
-        <input type="file" id="imagen" name="imagen" placeholder="Imagen" accept="image/*" required  class="input">
+      <input type="file" id="imagen" name="imagen" placeholder="Imagen" accept="image/*" required class="input">
     </label>
     <label for="descripcion">
-        <input type="text" id="descripcion" name="imagen" placeholder="Descripción" class="input">
+      <input type="text" id="descripcion" name="imagen" placeholder="Descripción" class="input">
     </label>
-    <button type="submit">Enviar</button>
-</form>
+    <button type="submit" onclick="showAlert()">Crear</button>
+    <script>
+      function showAlert() {
+        alert("Refugio cargado!");
+      }
+    </script>
+  </form>
 </div>
 
 {% endblock %}
