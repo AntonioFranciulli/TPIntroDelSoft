@@ -74,9 +74,9 @@ def edicion_voluntario():
         return render_template("confirmacion_voluntario.html")
     return render_template("editar_voluntario.html")
 
-@app.route("/detalles_refugio")
-def detalles_refugio():
-    return render_template("detalles_refugio.html")
+@app.route("/detalles_voluntario")
+def detalles_voluntario():
+    return render_template("detalles_voluntario.html")
 
 @app.route("/feed")
 def feed():
