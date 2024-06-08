@@ -1,3 +1,4 @@
+// Variable global hardcodeada de momento, lo ideal seria que cada uno use su propio token de mapbox localmente en su codigo
 mapboxgl.accessToken = 'pk.eyJ1IjoiYW50b25pb2ZyYW5jaXVsbGkiLCJhIjoiY2x4Mjh6cnBjMDU3bTJtcTQ3MHF6MHd1NSJ9.Y0mKINbt5hFNcSeizlZ-MA';
 
 // Variable hardcodeada temporalmente que sera generada automaticamente cuando se cargue
