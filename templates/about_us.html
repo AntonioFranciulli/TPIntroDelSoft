@@ -10,9 +10,16 @@
         </h3>
         <h3 style="font-weight: 700;">&#x2022; ¿Cómo funciona la página?</h3>
         <h3>
-            En esta pagina podes encontrar los diferentes lugares que se inscribieron para ayudarte. En la página principal hay un catálogo, solo tenés que tocar 
-            el que necesites y vas a poder ver una vista mas detallada. Si querés ir tocá el botón '¿Cómo ir?'
+            En esta pagina podes encontrar los diferentes lugares que se inscribieron para ayudarte. En la página principal hay un catálogo donde puedes acceder clickeando ,solo tenés que tocar 
+            el que necesites y vas a poder ver una vista mas detallada. Si querés ir tocá el botón '¿Cómo ir?' 
+
+            <img src="{{url_for('static',filename ='/images/foto_ayuda.jpeg')}}">
+
+
+
+            <img src="{{url_for('static',filename ='/images/agregar_refugio.jpeg')}}">
         </h3>
+        <h4> Para ello, hacer click <a href=" {{url_for('feed')}}">aquí</a></h4>
     </div>
 </div>
 {% endblock %}
