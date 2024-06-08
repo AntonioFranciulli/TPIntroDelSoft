@@ -30,40 +30,44 @@ def internal_error(e):
 def about_us():
     return render_template("about_us.html")
 
+def data_return(tipo):
+    if tipo == "voluntario":
+        return (request.form.get("fnombre_voluntario"),
+                request.form.get("fpuesto_voluntario"),
+                request.form.get("ftelefono_voluntario"),
+                request.form.get("fcuil_voluntario"),
+                request.form.get("ffoto_voluntario"),
+                )
+    elif tipo == "refugio":
+        return (request.form.get("fnombre_refugio"),
+                request.form.get("fdireccion_refugio"),
+                request.form.get("fdescripcion_refugio"),
+                request.form.get("ftipo_refugio"),
+                request.form.get("ftelefono_refugio"),
+                request.form.get("fusuario_refugio"), #TODO: USUARIO NO ESTÁ IMPLEMENTADO AUN
+                request.form.get("fimagen_refugio"))
+
+
 
 @app.route("/voluntario_cargado", methods = ["GET","POST"])
 def cargar_voluntario():
     if request.method == "POST":
-        nombre = request.form.get("fnombre_voluntario")
-        apellido = request.form.get("ftipo_voluntario")
-        telefono = request.form.get("ftelefono_voluntario")
-        cuil = request.form.get("fcuil_voluntario")
-        foto = request.form.get("ffoto_voluntario")
-        return redirect(url_for("feed.html"))
+        nombre, puesto, telefono, cuil, foto = data_return("voluntario")
+        return redirect(url_for("feed"))
     return render_template("cargar_voluntario.html")
 
 
 @app.route("/edicion_refugio",methods = ["GET","POST"])
 def edicion_refugio():
     if request.method == "POST":
-        nombre = request.form.get("fnombre_refugio")
-        direccion = request.form.get("fdireccion_refugio")
-        descripcion = request.form.get("fdescripcion_refugio")
-        tipo = request.form.get("ftipo_refugio")
-        telefono = request.form.get("ftelefono_refugio")
-        usuario = request.form.get("fusuario_refugio")
-        foto = request.form.get("ffoto_refugio")
+        nombre, direccion, descripcion, tipo, telefono, usuario, foto = data_return("refugio")
         return render_template("detalles_refugio.html")
     return render_template("editar_refugio.html")
 
 @app.route("/edicion_voluntario", methods = ["GET","POST"])
 def edicion_voluntario():
     if request.method == "POST":
-        nombre = request.form.get("fnombre_voluntario")
-        puesto = request.form.get("fpuesto_voluntario")
-        telefono = request.form.get("ftelefono_voluntario")
-        cuil = request.form.get("fcuil_voluntario")
-        foto = request.form.get("ffoto_voluntario")
+        nombre, puesto, telefono, cuil, foto = data_return("voluntario")
         return render_template("detalles_voluntario.html")
     return render_template("editar_voluntario.html")
 
@@ -82,12 +86,7 @@ def feed():
 @app.route("/cargar_refugio", methods = ["GET","POST"])
 def cargar_refugio():
     if request.method == "POST":
-        nombre = request.form.get("nombre")
-        tipo = request.form.get("tipo")
-        direccion = request.form.get("direccion")
-        telefono = request.form.get("telefono")
-        imagen = request.form.get("imagen")
-        descripcion = request.form.get("descripcion")
+        nombre, direccion, descripcion, tipo, telefono, usuario, foto = data_return("refugio")
         return render_template("feed.html")
     return render_template("cargar_refugio.html")
 
