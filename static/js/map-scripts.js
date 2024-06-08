@@ -72,7 +72,7 @@ map.addControl(nav)
 // Funcion que recibe un archivo geojson, toma los valores de title (nombre del lugar/refugio) 
 // y address (direccion del refugio) y genera un nuevo geojson con una descripción que se mostrará 
 // en los popups de los marcadores en el mapa.
-generateDescriptions(geojson) {
+function generateDescriptions(geojson) {
     var features = geojson.features;
 
     for (var i = 0; i < features.length; i++) {
