@@ -1,53 +1,39 @@
 {% extends 'base.html' %}
 {% block head %}
 <style>
-
-.centered__content {
-  padding-left: 450px;
-  margin: auto;
-  transform: scale(1);
+.contenedor-tarjetas {
+  display: flex;
 }
 
-
-#primera-imagen {
-  width: 300px;
+.tarjeta {
+  position: relative;
+  width: 350px;
   height: auto;
   border-radius: 10px;
-  transition: transform 0.3s ease-in-out;
-  display: block; 
-  margin: 0 auto; 
-}
-
-#primera-imagen:hover {
-  transform: scale(1.05);
-}
-
-.card {
-  position: relative;
-  width: 500px;
-  height: 350px;
-  background-color: #f2f2f2;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
-  perspective: 1000px;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.3s ease-in-out;
 }
 
-.card svg {
-  width: 48px;
-  fill: #333;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.tarjeta:not(:last-child) {
+  margin-right: 20px;
 }
 
-.card:hover {
+.tarjeta:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
 }
 
-.card__content {
+.tarjeta img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.tarjeta a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.contenido-tarjeta {
   position: absolute;
   left: 0;
   width: 100%;
@@ -60,34 +46,33 @@
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.card:hover .card__content {
+.tarjeta:hover .contenido-tarjeta {
   transform: rotateX(0deg);
 }
 
-.card__title {
+.titulo-tarjeta {
   font-size: 30px;
   color: #111111;
   font-weight: 700;
 }
 
-.card__subtitle {
+.subtitulo-tarjeta {
   margin: 14px 0 0;
   font-size: 25px;
   color: #111111;
   line-height: 1.2;
 }
 
-.card:hover svg {
+.tarjeta:hover svg {
   scale: 0;
 }
 
-.card__description {
+.descripcion-tarjeta {
   margin: 10px 0 0;
   font-size: 20px;
   line-height: 1.4;
   color: #111111;
 }
-
 
 #enlace {
   background-color: #f2f2f2;
@@ -101,7 +86,6 @@
 #enlace:hover {
   background-color: #ddd;
 }
-
 
 .texto {
   font-family: Arial, sans-serif;
@@ -117,15 +101,66 @@
   padding-bottom: 10px;
 }
 
-
-.ultima-imagen {
-  margin-top: 20px;
+.contenedor-imagen-principal {
+  position: relative;
+  width: 350px;
+  height: auto;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
 }
 
+.contenedor-imagen-principal img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.contenedor-imagen-principal:hover {
+  transform: scale(1.05);
+}
+
+.contenedor-imagen-principal::after {
+  content: "Ir a la sección de refugios";
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  font-size: 12px;
+  color: #333;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.contenedor-imagen-principal:hover::after {
+  opacity: 1;
+}
+
+.mensaje-tarjeta::after {
+  content: attr(data-mensaje);
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  font-size: 12px;
+  color: #333;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.tarjeta:hover .mensaje-tarjeta::after {
+  opacity: 1;
+}
 </style>
 {% endblock %}
 {% block body %}
-<div class="container-fluid d-flex justify-content-center">
+<div class="contenedor-fluid d-flex justify-content-center">
     <div class="col-8">
         <h1 class="mb-2 titulo">Calle solidaria</h1>
         <h3 style="font-weight: 700;">&#x2022; ¿Quiénes somos?</h3>
@@ -133,53 +168,35 @@
             Somos un grupo solidario que nos preocupa la situación que viven muchas personas. Con el objetivo de ayudar nos propusimos
             crear una red de refugios, paradores y comedores que aunque no resuelvan la situación, ayudan a paliarla. 
         </h3>
-        <div class="centro">
-          
-          <img id="primera-imagen" src="{{url_for('static', filename='/images/foto_ayuda.jpeg')}}" alt="Foto Ayuda">
+        <div class="tarjeta contenedor-imagen-principal" data-mensaje="Ir a la sección de refugios">
+            <a href="{{url_for('feed')}}">
+              <img id="imagen-principal" src="{{url_for('static', filename='/images/foto_ayuda.jpeg')}}" alt="Foto Ayuda">
+            </a>
+        <br>
+        <br>
         </div>
         <h3 style="font-weight: 700;">&#x2022; ¿Cómo funciona la página?</h3>
         <h3 class="texto">
             En esta página puedes encontrar los diferentes lugares que se inscribieron para ayudarte. En la página principal hay un catálogo donde puedes acceder clickeando, solo tienes que tocar 
-            el que necesites y vas a poder ver una vista más detallada. Si quieres ir, toca el botón <a id="enlace" href="{{url_for('feed')}}">¿Cómo ir?</a>
+            el que necesites y vas a poder ver una vista más detallada. 
         </h3>
 
         <br/>
         <br/>
         <br/>
 
-        <div class="centro ultima-imagen">
-          
-          <a href="{{url_for('cargar_refugio')}}">
-              <div class="card">
-                  <img src="{{url_for('static', filename='/images/agregar_refugio.jpeg')}}" alt="Agregar Refugio" width="100%" height="100%">
-                  <div class="card__content">
-                      <div class="card__title">Agrega tu refugio</div>
-                      <div class="card__subtitle">Danos una mano creando tu refugio para ayudar a más personas.</div>
-                  </div>
-              </div>
-          </a>
-
-        <br/>
-        <br/>
-
-        </div>
-        <div class="centro ultima-imagen">
-            
-            <a href="{{url_for('cargar_voluntario')}}">
-                <div class="card">
-                    <img src="{{url_for('static', filename='/images/modelo_voluntarios.jpeg')}}" alt="Agregar Refugio" width="100%" height="100%">
-                    <div class="card__content">
-                        <div class="card__title">Sumate a nuestra comunidad</div>
-                        <div class="card__subtitle">Entra aquí para poder ayudar en nuestros refugios!</div>
-                    </div>
-                </div>
+        <div class="contenedor-tarjetas">
+          <div class="tarjeta mensaje-tarjeta">
+            <a href="{{url_for('cargar_voluntario')}}" data-mensaje="Agregar Voluntario">
+              <img src="{{url_for('static', filename='/images/modelo_voluntarios.jpeg')}}" alt="Agregar Refugio" class="ultima-imagen">
             </a>
           </div>
+          <div class="tarjeta mensaje-tarjeta">
+            <a href="{{url_for('cargar_refugio')}}" data-mensaje="Agregar Refugio">
+              <img src="{{url_for('static', filename='/images/agregar_refugio.jpeg')}}" alt="Agregar Refugio" class="ultima-imagen">
+            </a>
+          </div>
+        </div>
     </div>
 </div>
 {% endblock %}
-
-
-
-    
-   
