@@ -56,3 +56,13 @@ geojson_refugios = {
     ]
 }
 
+// Creo un nuevo mapa centrado en Buenos Aires.
+const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v12',
+    center:[-58.4339192, -34.6020498],
+});
+
+// Agrego menu de navegacion al mapa.
+const nav = new mapboxgl.NavigationControl()
+map.addControl(nav)
