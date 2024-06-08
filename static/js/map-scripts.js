@@ -61,6 +61,7 @@ const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v12',
     center:[-58.4339192, -34.6020498],
+    zoom: 12
 });
 
 // Agrego menu de navegacion al mapa.
