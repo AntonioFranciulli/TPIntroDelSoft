@@ -1,21 +1,202 @@
 {% extends 'base.html' %}
+{% block head %}
+<style>
+.contenedor-tarjetas {
+  display: flex;
+}
+
+.tarjeta {
+  position: relative;
+  width: 350px;
+  height: auto;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.tarjeta:not(:last-child) {
+  margin-right: 20px;
+}
+
+.tarjeta:hover {
+  transform: scale(1.05);
+}
+
+.tarjeta img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.tarjeta a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.contenido-tarjeta {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+  transform: rotateX(-90deg);
+  transform-origin: bottom;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.tarjeta:hover .contenido-tarjeta {
+  transform: rotateX(0deg);
+}
+
+.titulo-tarjeta {
+  font-size: 30px;
+  color: #111111;
+  font-weight: 700;
+}
+
+.subtitulo-tarjeta {
+  margin: 14px 0 0;
+  font-size: 25px;
+  color: #111111;
+  line-height: 1.2;
+}
+
+.tarjeta:hover svg {
+  scale: 0;
+}
+
+.descripcion-tarjeta {
+  margin: 10px 0 0;
+  font-size: 20px;
+  line-height: 1.4;
+  color: #111111;
+}
+
+#enlace {
+  background-color: #f2f2f2;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#enlace:hover {
+  background-color: #ddd;
+}
+
+.texto {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.titulo {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 36px;
+  font-weight: bold;
+  border-bottom: 2px solid #333;
+  padding-bottom: 10px;
+}
+
+.contenedor-imagen-principal {
+  position: relative;
+  width: 350px;
+  height: auto;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.contenedor-imagen-principal img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.contenedor-imagen-principal:hover {
+  transform: scale(1.05);
+}
+
+.contenedor-imagen-principal::after {
+  content: "Ir a la sección de refugios";
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  font-size: 12px;
+  color: #333;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.contenedor-imagen-principal:hover::after {
+  opacity: 1;
+}
+
+.mensaje-tarjeta::after {
+  content: attr(data-mensaje);
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  font-size: 12px;
+  color: #333;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.tarjeta:hover .mensaje-tarjeta::after {
+  opacity: 1;
+}
+</style>
+{% endblock %}
 {% block body %}
-<div class="container-fluid d-flex justify-content-center">
+<div class="contenedor-fluid d-flex justify-content-center">
     <div class="col-8">
-        <h1 class="mb-2" style="font-size: 48px; text-align: center; font-family: 'Times New Roman', Times, serif;">Calle solidaria</h1>
-        <h3 style="font-weight: 700;">&#x2022; ¿Quienes somos?</h3>
-        <h3 class="mb-2">
+        <h1 class="mb-2 titulo">Calle solidaria</h1>
+        <h3 style="font-weight: 700;">&#x2022; ¿Quiénes somos?</h3>
+        <h3 class="mb-2 texto">
             Somos un grupo solidario que nos preocupa la situación que viven muchas personas. Con el objetivo de ayudar nos propusimos
             crear una red de refugios, paradores y comedores que aunque no resuelvan la situación, ayudan a paliarla. 
         </h3>
+        <div class="tarjeta contenedor-imagen-principal" data-mensaje="Ir a la sección de refugios">
+            <a href="{{url_for('feed')}}">
+              <img id="imagen-principal" src="{{url_for('static', filename='/images/foto_ayuda.jpeg')}}" alt="Foto Ayuda">
+            </a>
+        <br>
+        <br>
+        </div>
         <h3 style="font-weight: 700;">&#x2022; ¿Cómo funciona la página?</h3>
-        <h3>
-            En esta pagina podes encontrar los diferentes lugares que se inscribieron para ayudarte. En la página principal hay un catálogo, solo tenés que tocar 
-            el que necesites y vas a poder ver una vista mas detallada. Si querés ir tocá el botón '¿Cómo ir?'
+        <h3 class="texto">
+            En esta página puedes encontrar los diferentes lugares que se inscribieron para ayudarte. En la página principal hay un catálogo donde puedes acceder clickeando, solo tienes que tocar 
+            el que necesites y vas a poder ver una vista más detallada. 
         </h3>
+
+        <br/>
+        <br/>
+        <br/>
+
+        <div class="contenedor-tarjetas">
+          <div class="tarjeta mensaje-tarjeta">
+            <a href="{{url_for('cargar_voluntario')}}" data-mensaje="Agregar Voluntario">
+              <img src="{{url_for('static', filename='/images/modelo_voluntarios.jpeg')}}" alt="Agregar Refugio" class="ultima-imagen">
+            </a>
+          </div>
+          <div class="tarjeta mensaje-tarjeta">
+            <a href="{{url_for('cargar_refugio')}}" data-mensaje="Agregar Refugio">
+              <img src="{{url_for('static', filename='/images/agregar_refugio.jpeg')}}" alt="Agregar Refugio" class="ultima-imagen">
+            </a>
+          </div>
+        </div>
     </div>
 </div>
 {% endblock %}
-    
-    
-   

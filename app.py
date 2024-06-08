@@ -16,7 +16,6 @@ def forbidden_error(e):
     return render_template("403.html"), 403
 
 
-
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html"), 404
@@ -27,12 +26,9 @@ def internal_error(e):
     return render_template("500.html") , 500
 
 
-
 @app.route("/about_us")
 def about_us():
     return render_template("about_us.html")
-
-
 
 
 @app.route("/voluntario_cargado", methods = ["GET","POST"])
@@ -45,7 +41,6 @@ def cargar_voluntario():
         foto = request.form.get("ffoto_voluntario")
         return redirect(url_for("feed.html"))
     return render_template("cargar_voluntario.html")
-
 
 
 @app.route("/edicion_refugio",methods = ["GET","POST"])
@@ -96,7 +91,11 @@ def cargar_refugio():
         return render_template("feed.html")
     return render_template("cargar_refugio.html")
 
-
+@app.route("/mapa")
+def mapa():
+    # TO DO: Aca iria una llamada a la API para leer todos los refugios de la base de datos,
+    # convertirlos a geojson y pasarle ese geojson a el mapa, de momento ese geojson esta hardcodeado.
+    return render_template("mapa.html")
 
 
 if __name__ == "__main__":
