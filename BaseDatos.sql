@@ -1,23 +1,23 @@
 CREATE TABLE IF NOT EXISTS refugios (
-    ID_refugio INT ,
-    direccion VARCHAR(50),
-    descripcion VARCHAR(50),
+    id_refugio INT ,
+    direccion VARCHAR(30),
+    descripcion VARCHAR(100),
     tipo_refugio VARCHAR(50),
-    telefono VARCHAR(20),
+    telefono VARCHAR(15),
     link_foto VARCHAR(200),
-    lista_voluntarios VARCHAR(2000),
-    PRIMARY KEY(ID_refugio)
+    lista_voluntarios VARCHAR(1000),
+    PRIMARY KEY(id_refugio)
 
 );
 
 CREATE TABLE if not EXISTS voluntarios (
-CUIL_voluntario INT,
-puesto VARCHAR(50),
-telefono VARCHAR(50),
+cuil_voluntario_voluntario INT,
+puesto VARCHAR(30),
+telefono VARCHAR(15),
 Nombre VARCHAR(50),
-ID_refugio INT,
-PRIMARY KEY (CUIL_voluntario),
-FOREIGN KEY (ID_refugio) REFERENCES refugios(ID_refugio)
+id_refugio INT,
+PRIMARY KEY (cuil_voluntario),
+FOREIGN KEY (id_refugio_refugio) REFERENCES refugios(id_refugio)
 );
 
 
