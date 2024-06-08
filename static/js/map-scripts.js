@@ -67,3 +67,22 @@ const map = new mapboxgl.Map({
 // Agrego menu de navegacion al mapa.
 const nav = new mapboxgl.NavigationControl()
 map.addControl(nav)
+
+
+// Funcion que recibe un archivo geojson, toma los valores de title (nombre del lugar/refugio) 
+// y address (direccion del refugio) y genera un nuevo geojson con una descripción que se mostrará 
+// en los popups de los marcadores en el mapa.
+generateDescriptions(geojson) {
+    var features = geojson.features;
+
+    for (var i = 0; i < features.length; i++) {
+        var feature = features[i];
+        var description = "<strong>${title}</strong><p>${address}</p>";
+        description = description.replace(/\${([^}]+)}/g, function(match, property) {
+            return feature.properties[property];
+        });
+        feature.properties.description = description;
+    }
+
+    return geojson;
+}
