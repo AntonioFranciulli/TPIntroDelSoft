@@ -6,4 +6,5 @@ pip install --user pipenv
 mkdir .venv
 pipenv install flask
 
-
+export FLASK_DEBUG=1
+flask run

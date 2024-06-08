@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block head %}
+<style>
+
+.centered__content {
+  padding-left: 450px;
+  margin: auto;
+  transform: scale(1);
+
+}
+.card {
+  position: relative;
+  width: 500px;
+  height: 350px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  perspective: 1000px;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card svg {
+  width: 48px;
+  fill: #333;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+}
+
+.card__content {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+  transform: rotateX(-90deg);
+  transform-origin: bottom;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover .card__content {
+  transform: rotateX(0deg);
+}
+
+.card__title {
+  
+  font-size: 30px;
+  color: #111111;
+  font-weight: 700;
+}
+
+.card__subtitle {
+  margin: 14px 0 0;
+  font-size: 25px;
+  color: #111111;
+  line-height: 1.2;
+}
+
+.card:hover svg {
+  scale: 0;
+}
+
+.card__description {
+  margin: 10px 0 0;
+  font-size: 20px;
+  line-height: 1.4;
+  color: #111111;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+{% for i in range(1) %} <!-- Dejo el for listo para cuando haya que mostrar todos los refugios de la base de datos, en este momento hay uno a modo de prueba -->
+<a href="{{url_for('detalles_refugio')}}"><div class="container-fluid d-flex justify-content-center">
+  <div class="card">
+    <img src="https://media.lacapital.com.ar/p/90db6f8482a928b1aa2fd723ea31f14f/adjuntos/203/imagenes/100/071/0100071190/1200x675/smart/image-13png.png" alt="Manos Abiertas Refugio">
+    <div class="card__content">
+      <p class="card__title">Manos Abiertas Refugio</p>
+      <p class="card__subtitle">Av. Paseo Colón 850</p>
+      <p class="card__description">El refugio "Manos Abiertas" abrió sus puertas en 2016 y desde entonces ayuda a quienes mas lo 
+        necesitan. Si necesitás un lugar para dormir esta noche no dudes en venir.</p>
+      <p>Tipo de refugio: Hospedaje por la noche</p>
+      <p>Teléfono: 1234-6789</p>
+      <p>Mail: manosabiertas@example.com</p>
+    </div>
+  </div>
+  {% endfor %}
+</div></a>
+{% endblock %}
