@@ -86,3 +86,27 @@ function generateDescriptions(geojson) {
 
     return geojson;
 }
+
+map.on('load', () => {
+    // Actualizo archivo geojson para que tenga descripciones
+    var geojsonConDescripciones = generateDescriptions(geojson_refugios);
+
+    // Agrego a mapa el archivo geojson.
+    map.addSource('places', {
+        'type': 'geojson',
+        'data': geojsonConDescripciones       
+    });
+
+    // Agrego una capa al mapa que muestre los lugares del geojson
+    map.addLayer({
+        'id': 'places',
+        'type': 'circle',
+        'source': 'places',
+        'paint': {
+            'circle-color': '#4264fb',
+            'circle-radius': 6,
+            'circle-stroke-width': 2,
+            'circle-stroke-color': '#ffffff'
+        }
+    });
+});
