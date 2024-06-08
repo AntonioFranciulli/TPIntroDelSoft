@@ -92,16 +92,16 @@ map.on('load', () => {
     var geojsonConDescripciones = generateDescriptions(geojson_refugios);
 
     // Agrego a mapa el archivo geojson.
-    map.addSource('places', {
+    map.addSource('refugios', {
         'type': 'geojson',
         'data': geojsonConDescripciones       
     });
 
     // Agrego una capa al mapa que muestre los lugares del geojson
     map.addLayer({
-        'id': 'places',
+        'id': 'refugios',
         'type': 'circle',
-        'source': 'places',
+        'source': 'refugios',
         'paint': {
             'circle-color': '#4264fb',
             'circle-radius': 6,
@@ -109,4 +109,34 @@ map.on('load', () => {
             'circle-stroke-color': '#ffffff'
         }
     });
+});
+
+// Creo popup base
+const popup = new mapboxgl.Popup({
+    closeButton: false,
+    closeOnClick: false
+});
+
+// Comportamiento cuando el mouse se posiciona encima de un marker en el mapa
+map.on('mouseenter', 'refugios', (e) => {
+    // Cambio cursor al entrar a un popup
+    map.getCanvas().style.cursor = 'pointer';
+
+    // Guardo cordenadas y descripcion del marker que me interesa
+    const coordinates = e.features[0].geometry.coordinates.slice();
+    const description = e.features[0].properties.description;
+
+    // Me aseguro que el popup se muestre bien sin importar si zoomeo o saco zoom
+    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+    }
+
+    // Agrego descripcion al popup y le asigno las coordenadas en el mapa.
+    popup.setLngLat(coordinates).setHTML(description).addTo(map);
+});
+
+// Comportamiento cuando el mouse se deja de posicionar encima de un marker en el mapa
+map.on('mouseleave', 'refugios', () => {
+    map.getCanvas().style.cursor = '';
+    popup.remove();
 });
