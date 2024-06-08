@@ -1,26 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Display a map on a webpage</title>
+    <title>Mapa de Refugios</title>
+    <!-- mapbox styles css & js scripts-->
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
+    <!-- refugios styles css & js scripts -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
     <script defer src="static/js/map-scripts.js"></script>
-    <style>
-        body { margin: 0; padding: 0; }
-        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
-        
-        .mapboxgl-popup {
-            max-width: 400px;
-            font:
-                12px/20px 'Helvetica Neue',
-                Arial,
-                Helvetica,
-                sans-serif;
-        }
-
-    </style>
 </head>
 <body>
     <div id="map"></div>
