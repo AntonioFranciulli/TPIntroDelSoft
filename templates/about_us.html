@@ -99,6 +99,7 @@
   font-weight: bold;
   border-bottom: 2px solid #333;
   padding-bottom: 10px;
+  text-align: center;
 }
 
 .contenedor-imagen-principal {
@@ -107,7 +108,12 @@
   height: auto;
   border-radius: 10px;
   overflow: hidden;
-  transition: transform 0.3s ease-in-out;
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+}
+.texto{
+  text-align:justify;
 }
 
 .contenedor-imagen-principal img {
@@ -153,37 +159,56 @@
   transition: opacity 0.3s ease;
   opacity: 0;
 }
+.ultima-imagen{
+  text-align: center;
+}
+
 
 .tarjeta:hover .mensaje-tarjeta::after {
   opacity: 1;
 }
+#imagen-principal{
+  text-align: center;
+}
+
 </style>
 {% endblock %}
 {% block body %}
 <div class="contenedor-fluid d-flex justify-content-center">
     <div class="col-8">
-        <h1 class="mb-2 titulo">Calle solidaria</h1>
+        <h1 class="mb-2 titulo">CALLE SOLIDARIA</h1>
         <h3 style="font-weight: 700;">&#x2022; ¿Quiénes somos?</h3>
         <h3 class="mb-2 texto">
             Somos un grupo solidario que nos preocupa la situación que viven muchas personas. Con el objetivo de ayudar nos propusimos
             crear una red de refugios, paradores y comedores que aunque no resuelvan la situación, ayudan a paliarla. 
         </h3>
-        <div class="tarjeta contenedor-imagen-principal" data-mensaje="Ir a la sección de refugios">
-            <a href="{{url_for('feed')}}">
-              <img id="imagen-principal" src="{{url_for('static', filename='/images/foto_ayuda.jpeg')}}" alt="Foto Ayuda">
-            </a>
-        <br>
-        <br>
-        </div>
+        
         <h3 style="font-weight: 700;">&#x2022; ¿Cómo funciona la página?</h3>
         <h3 class="texto">
             En esta página puedes encontrar los diferentes lugares que se inscribieron para ayudarte. En la página principal hay un catálogo donde puedes acceder clickeando, solo tienes que tocar 
-            el que necesites y vas a poder ver una vista más detallada. 
+            el que necesites y vas a poder ver una vista más detallada. Si clickeás la imagen a continuación, podrás acceder directamente a toda esa información.
         </h3>
 
         <br/>
         <br/>
         <br/>
+        <div class="tarjeta contenedor-imagen-principal centrado" data-mensaje="Ir a la sección de refugios">
+          <a href="{{url_for('feed')}}">
+            <img id="imagen-principal" src="{{url_for('static', filename='/images/foto_ayuda.jpeg')}}" alt="Foto Ayuda">
+          </a>
+        <br/>
+        <br/>
+        <br/>
+      </div>
+      <h3 style ="font-weight: 700">&#x2022; ¿Cómo podés ayudar?</h3></h3>
+      <h3 class="texto">
+        Podés colaborar de las siguientes maneras: Si conocés un lugar que pueda servir como refugio, podeś clickear la primera imagen, que te llevará a una página en donde podrás colocar los datos para que tu refugio esté disponible. 
+        Por otro lado, si querés trabajar como voluntario en alguno de los refugios, podés clickear la segunda imagen, y cargar tus datos para empezar a servir en el lugar que te quede más cómodo.
+      </h3>
+      <br/>
+      <br/>
+      <br/>
+  
 
         <div class="contenedor-tarjetas">
           <div class="tarjeta mensaje-tarjeta">
