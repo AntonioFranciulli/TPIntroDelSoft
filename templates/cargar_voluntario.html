@@ -148,30 +148,43 @@
         <p class="title">Sé Voluntario </p>
             <div class="flex">
             <label for="nombre_voluntario" >
-                <input class="input" type="text" id="nombre_voluntario" name="fnombre_voluntario" placeholder="Nombre" >
+                <input required class="input" type="text" id="nombre_voluntario" name="fnombre_voluntario" placeholder="Nombre" >
             </label>
   
             <label for="tipo_voluntario">
-                <input type="text" id="tipo_voluntario" name="ftipo_voluntario" placeholder="Voluntariado para:" class="input">
+                <input type="text" id="tipo_voluntario" name="fpuesto_voluntario" placeholder="Voluntariado para:" required class="input">
             </label>
         </div>  
                 
         <label for="telefono_voluntario" >
-            <input type="text" id="telefono_voluntario" name="ftelefono_voluntario" placeholder="Teléfono" class="input">
+            <input type="text" id="telefono_voluntario" name="ftelefono_voluntario" placeholder="Teléfono" required class="input">
         </label> 
             
         <label for="cuil_voluntario" >
-            <input type="text" id="cuil_voluntario" name="fcuil_voluntario" placeholder="CUIL" class="input">
+            <input type="text" id="cuil_voluntario" name="fcuil_voluntario" placeholder="CUIL" required class="input">
         </label>
         <label for="foto_voluntario" >
-            <input type="text" id="foto_voluntario" name="ffoto_voluntario" placeholder="Link a su foto de perfil"  class="input">
+            <input type="text" id="foto_voluntario" name="ffoto_voluntario" placeholder="Link a su foto de perfil"  required class="input">
         </label>
-        <button class="py-2 bg-success border-0 rounded text-white" type="submit" onclick="showAlert()">Crear</button>
-        <script>
-          function showAlert() {
+        <button class="py-2 bg-success border-0 rounded text-white" type="submit" onclick="showAlert()">Aceptar</button>
+      <script>
+        function showAlert() {
+          const inputs = document.querySelectorAll('.input');
+          let allFilled = true;
+
+          inputs.forEach(input => {
+            if (input.value === '') {
+              allFilled = false;
+            }
+          });
+
+          if (allFilled) {
             alert("Voluntario cargado!");
+          } else {
+            alert("Por favor, rellene todos los campos.");
           }
-        </script>
+}
+      </script>
     </form>
   </div>
 </div>
