@@ -89,6 +89,7 @@ function generateDescriptions(geojson) {
 }
 
 map.on('load', () => {
+    map.resize()
     // Actualizo archivo geojson para que tenga descripciones
     var geojsonConDescripciones = generateDescriptions(geojson_refugios);
 
