@@ -1,5 +1,5 @@
 // Variable global hardcodeada de momento, lo ideal seria que cada uno use su propio token de mapbox localmente en su codigo
-mapboxgl.accessToken = 'pk.eyJ1IjoiYW50b25pb2ZyYW5jaXVsbGkiLCJhIjoiY2x4Mjh6cnBjMDU3bTJtcTQ3MHF6MHd1NSJ9.Y0mKINbt5hFNcSeizlZ-MA';
+mapboxgl.accessToken = 'pk.eyJ1IjoiYW50b25pb2ZyYW5jaXVsbGkiLCJhIjoiY2x4N3J4a2p5MHd2ajJycG1sZmU2ZWZvcSJ9.0hdKusxNrisOijQEdlLSrg';
 
 // Variable hardcodeada temporalmente que sera generada automaticamente cuando se cargue
 // la vista del mapa. Para hacerlo, se piden todos los refugios a la db y se los formatea en formato geojson.
