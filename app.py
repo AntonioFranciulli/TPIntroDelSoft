@@ -85,9 +85,6 @@ def feed():
 
 @app.route("/cargar_refugio", methods = ["GET","POST"])
 def cargar_refugio():
-    if request.method == "POST":
-        nombre, direccion, descripcion, tipo, telefono, usuario, foto = data_return("refugio")
-        return render_template("feed.html")
     return render_template("cargar_refugio.html")
 
 @app.route("/mapa")
@@ -97,5 +94,5 @@ def mapa():
     return render_template("mapa.html")
 
 
-if __name__ == "__main__":
-    app.run("127.0.0.1",port = "8080", debug = True)
+if __name__ == '__main__': 
+   app.run(host='127.0.0.1', port=8080)
