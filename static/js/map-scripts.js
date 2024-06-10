@@ -62,7 +62,7 @@ const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v12',
     center:[-58.4339192, -34.6020498],
-    zoom: 12
+    zoom: 11
 });
 
 // Agrego menu de navegacion al mapa.
@@ -78,7 +78,7 @@ function generateDescriptions(geojson) {
 
     for (var i = 0; i < features.length; i++) {
         var feature = features[i];
-        var description = "<strong>${title}</strong><p>${address}</p>";
+        var description = "<strong>${title}</strong><map_p>${address}</map_p>";
         description = description.replace(/\${([^}]+)}/g, function(match, property) {
             return feature.properties[property];
         });
