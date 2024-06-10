@@ -67,6 +67,13 @@
 .card:hover svg {
   scale: 0;
 }
+.titulo {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 36px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  text-align: center;
+}
 
 .card__description {
   margin: 10px 0 0;
@@ -74,10 +81,12 @@
   line-height: 1.4;
   color: #111111;
 }
+
 </style>
 {% endblock %}
 
 {% block body %}
+<h1 class="titulo">REFUGIOS</h1>
 {% for i in range(1) %}
 <div class="container-fluid d-flex justify-content-center">
   <a href="{{url_for('detalles_refugio')}}" style="text-decoration: none; color: inherit;">
