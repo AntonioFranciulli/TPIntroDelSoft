@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+{% block head %}
+<style>
+
+.centered__content {
+  padding-left: 500px;
+  margin: auto;
+  transform: scale(1);
+
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+  }
+  
+  .title {
+    font-size: 28px;
+    color:  #07ead3;
+    font-weight: 600;
+    letter-spacing: -1px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+  }
+  
+  .title::before,.title::after {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    left: 0px;
+    background-color:  #07ead3;
+  }
+  
+  .title::before {
+    width: 18px;
+    height: 18px;
+    background-color:  #07ead3;
+  }
+  
+  .title::after {
+    width: 18px;
+    height: 18px;
+    animation: pulse 1s linear infinite;
+  }
+  
+  .message, .signin {
+    color: rgba(88, 87, 87, 0.822);
+    font-size: 14px;
+  }
+  
+  .signin {
+    text-align: center;
+  }
+  
+  .signin a {
+    color:  #07ead3;
+  }
+  
+  .signin a:hover {
+    text-decoration: underline  #07ead3;
+  }
+  
+  .flex {
+    display: flex;
+    width: 100%;
+    gap: 6px;
+  }
+  
+  .form label {
+    position: relative;
+  }
+  
+  .form label .input {
+    width: 100%;
+    padding: 10px 10px 20px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+  }
+  
+  .form label .input + span {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    color: grey;
+    font-size: 0.9em;
+    cursor: text;
+    transition: 0.3s ease;
+  }
+  
+  .form label .input:placeholder-shown + span {
+    top: 15px;
+    font-size: 0.9em;
+  }
+  
+  .form label .input:focus + span,.form label .input:valid + span {
+    top: 30px;
+    font-size: 0.7em;
+    font-weight: 600;
+  }
+  
+  .form label .input:valid + span {
+    color: green;
+  }
+  
+  .submit {
+    border: none;
+    outline: none;
+    background-color:  #07ead3;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    transform: .3s ease;
+  }
+  
+  .submit:hover {
+    background-color: rgb(56, 90, 194);
+  }
+  
+  @keyframes pulse {
+    from {
+      transform: scale(0.9);
+      opacity: 1;
+    }
+  
+    to {
+      transform: scale(1.8);
+      opacity: 0;
+    }
+  }
+</style>
+{% endblock %}
+
+
+{% block body %}
+<div class="d-flex justify-content-center">
+  <div class="col-lg-6 col-12 d-flex flex-column align-items-center">
+    <form class="form" action="{{ url_for('cargar_voluntario') }}" method="post" >
+        <p class="title">Sé Voluntario </p>
+            <div class="flex">
+            <label for="nombre_voluntario" >
+                <input required class="input" type="text" id="nombre_voluntario" name="fnombre_voluntario" placeholder="Nombre" >
+            </label>
+  
+            <label for="tipo_voluntario">
+                <input type="text" id="tipo_voluntario" name="fpuesto_voluntario" placeholder="Voluntariado para:" required class="input">
+            </label>
+        </div>  
+                
+        <label for="telefono_voluntario" >
+            <input type="text" id="telefono_voluntario" name="ftelefono_voluntario" placeholder="Teléfono" required class="input">
+        </label> 
+            
+        <label for="cuil_voluntario" >
+            <input type="text" id="cuil_voluntario" name="fcuil_voluntario" placeholder="CUIL" required class="input">
+        </label>
+        <label for="foto_voluntario" >
+            <input type="text" id="foto_voluntario" name="ffoto_voluntario" placeholder="Link a su foto de perfil"  required class="input">
+        </label>
+        <button class="py-2 bg-success border-0 rounded text-white" type="submit" onclick="showAlert()">Aceptar</button>
+      <script>
+        function showAlert() {
+          const inputs = document.querySelectorAll('.input');
+          let allFilled = true;
+
+          inputs.forEach(input => {
+            if (input.value === '') {
+              allFilled = false;
+            }
+          });
+
+          if (allFilled) {
+            alert("Voluntario cargado!");
+          } else {
+            alert("Por favor, rellene todos los campos.");
+          }
+}
+      </script>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+body { margin: 0; padding: 0; }
+#map { position: relative; padding-bottom: 40%; top: 0; bottom: 0; width: auto; }
+
+.mapboxgl-popup {
+    max-width: 400px;
+    transition: none !important;
+    font:
+        12px/20px 'Helvetica Neue',
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+map_p {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+}
