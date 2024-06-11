@@ -1,7 +1,8 @@
 from flask import Flask,render_template,redirect,url_for,request
+import requests
+import json
 
 app = Flask(__name__)
-
 
 @app.route("/")
 def home():
@@ -75,13 +76,19 @@ def edicion_voluntario():
 def detalles_voluntario():
     return render_template("detalles_voluntario.html")
 
-@app.route("/detalles_refugio")
-def detalles_refugio():
-    return render_template("detalles_refugio.html")
+@app.route("/detalles_refugio/<id>")
+def detalles_refugio(id):
+    URL = "<direccion api>/obtener_refugio/" + id #completar url con la direccion donde corre su api local
+    result = requests.get(URL)
+    refugio = json.loads(result.text)
+    return render_template("detalles_refugio.html", refugio=refugio)
 
 @app.route("/feed")
 def feed():
-    return render_template("feed.html")
+    URL = "<direccion api>/obtener_refugios" #completar url con la direccion donde corre su api local
+    result = requests.get(URL)
+    refugios = json.loads(result.text)
+    return render_template("feed.html", refugios=refugios)
 
 @app.route("/cargar_refugio", methods = ["GET","POST"])
 def cargar_refugio():
