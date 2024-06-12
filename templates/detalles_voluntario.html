@@ -14,16 +14,12 @@
     </section>
     <section class="contenedor-informacion d-flex flex-column justify-content-between">
       <div class="informacion">
-        <h2>Voluntario: John Doe</h2> <!-- Esto deberia ser dinamico -->
-        <h3>Refugio: Manos Abiertas</h3> <!-- Quiza podria ser un link a la pagina del refugio -->
-        <p class="m-0">Tipo de ayuda voluntaria: Cocinero</p> <!-- Esto deberia ser dinamico -->
-        <ul class="">
-          Contacto:
-          <li>Telefono: +54 9 11 ****-****</li>
-          <li>Email: johndoe@example.com</li>
-        </ul>
+        <h2>Voluntario: {{ data['nombre'] }}</h2> <!-- Esto deberia ser dinamico -->
+        <h3>Refugio: {{ data['id_refugio'] }}</h3> <!-- Quiza podria ser un link a la pagina del refugio -->
+        <p class="m-0 mb-1" style="font-size: 18px;">Tipo de ayuda voluntaria: {{ data['puesto'] }}</p> <!-- Esto deberia ser dinamico -->
+        <p class="m-0" style="font-size: 18px;">Telefono: {{ data['telefono'] }} </p>
       </div>
-      <a class="mt-4" href="{{url_for('edicion_voluntario')}}">
+      <a class="mt-4" href="{{ url_for('edicion_voluntario', cuil=data['cuil_voluntario']) }}">
         <button class="px-3 py-2 rounded border border-primary bg-primary text-white">Editar</button>
       </a>
     </section>
