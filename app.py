@@ -78,21 +78,36 @@ def detalles_voluntario():
 
 @app.route("/detalles_refugio/<id>")
 def detalles_refugio(id):
-    URL = "<direccion api>/obtener_refugio/" + id #completar url con la direccion donde corre su api local
+    URL = "http://127.0.0.1:5050/obtener_refugio/" + id #completar url con la direccion donde corre su api local
     result = requests.get(URL)
     refugio = json.loads(result.text)
     return render_template("detalles_refugio.html", refugio=refugio)
 
 @app.route("/feed")
 def feed():
-    URL = "<direccion api>/obtener_refugios" #completar url con la direccion donde corre su api local
+    URL = "http://127.0.0.1:5050/obtener_refugios" #completar url con la direccion donde corre su api local
     result = requests.get(URL)
     refugios = json.loads(result.text)
     return render_template("feed.html", refugios=refugios)
 
 @app.route("/cargar_refugio", methods = ["GET","POST"])
 def cargar_refugio():
+    if request.method == "POST":
+        datos = {
+            "nombre_refugio": request.form.get("nombre_refugio"),
+            "direccion": request.form.get("direccion"),
+            "descripcion": request.form.get("descripcion"),
+            "tipo_refugio": request.form.get("tipo_refugio"),
+            "telefono": request.form.get("telefono"),
+            "link_foto": request.form.get("link_foto")
+        }
+        datos_json = json.dumps(datos)
+        URL = "http://127.0.0.1:5050/crear_refugio" #completar url con la direccion donde corre su api local
+        result = requests.post(URL, data=datos_json, headers={'Content-Type': 'application/json'})
+        return redirect("/feed")
     return render_template("cargar_refugio.html")
+
+
 
 @app.route("/mapa")
 def mapa():
