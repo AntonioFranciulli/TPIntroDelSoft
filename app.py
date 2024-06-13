@@ -53,8 +53,9 @@ def data_return(tipo):
                 request.form.get("fdescripcion_refugio"),
                 request.form.get("ftipo_refugio"),
                 request.form.get("ftelefono_refugio"),
+                request.form.get("fusuario_refugio"),
                 request.form.get("fimagen_refugio"))
-
+    
 
 @app.route("/voluntario_cargado", methods = ["GET","POST"])
 def cargar_voluntario():
@@ -124,13 +125,14 @@ def feed():
 @app.route("/cargar_refugio", methods = ["GET","POST"])
 def cargar_refugio():
     if request.method == "POST":
+        nombre_refugio, direccion, descripcion, tipo, telefono, usuario, foto = data_return("refugio")
         datos = {
-            "nombre_refugio": request.form.get("nombre_refugio"),
-            "direccion": request.form.get("direccion"),
-            "descripcion": request.form.get("descripcion"),
-            "tipo_refugio": request.form.get("tipo_refugio"),
-            "telefono": request.form.get("telefono"),
-            "link_foto": request.form.get("link_foto")
+            "nombre_refugio": nombre_refugio,
+            "direccion": direccion,
+            "descripcion": descripcion,
+            "tipo_refugio": tipo,
+            "telefono": telefono,
+            "link_foto": foto
         }
         datos_json = json.dumps(datos)
         URL = "http://127.0.0.1:5050/crear_refugio" #completar url con la direccion donde corre su api local
