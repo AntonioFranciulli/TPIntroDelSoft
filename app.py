@@ -55,7 +55,6 @@ def data_return(tipo):
                 request.form.get("ftelefono_refugio"),
                 request.form.get("fusuario_refugio"),
                 request.form.get("fimagen_refugio"))
-    
 
 @app.route("/voluntario_cargado", methods = ["GET","POST"])
 def cargar_voluntario():
@@ -76,7 +75,6 @@ def cargar_voluntario():
         return redirect(url_for("feed"))
     return render_template("cargar_voluntario.html")
 
-
 @app.route("/edicion_refugio",methods = ["GET","POST"])
 def edicion_refugio():
     if request.method == "POST":
@@ -87,24 +85,29 @@ def edicion_refugio():
 @app.route("/edicion_voluntario/<cuil>", methods = ["GET","POST"])
 def edicion_voluntario(cuil):
     if request.method == "POST":
-        nombre, puesto, telefono, cuil, foto = data_return("voluntario")
-        return render_template("detalles_voluntario.html")
-    return render_template("editar_voluntario.html")
+        nombre, puesto, telefono, cuil_vol, foto, refugio = data_return("voluntario")
+        URL = "http://127.0.0.1:5050/modificar_voluntario/" + cuil_vol
+        token = request.form.get("ftoken")
+        datos = {
+            "nombre": nombre,
+            "puesto": puesto,
+            "telefono": telefono,
+            'cuil_voluntario': cuil_vol,
+            'foto': foto,
+            'nombre_refugio': refugio,
+            'token': token
+        }
+        res = requests.patch(URL, data=json.dumps(datos), headers={'Content-Type': 'application/json'})
+        return redirect(url_for('detalles_voluntario', cuil=cuil_vol))
+    return render_template("editar_voluntario.html", cuil=cuil)
 
 @app.route("/detalles_voluntario/<cuil>")
 def detalles_voluntario(cuil):
     URL = "http://127.0.0.1:5050/obtener_voluntario/" + cuil #completar url con la direccion donde corre su api local
     res = requests.get(URL)
     data = json.loads(res.text)
-    data = data['data']
-    datos = {
-        'cuil_voluntario': cuil,
-        'puesto': data[1],
-        'telefono': data[2],
-        'nombre': data[3],
-        'id_refugio': data[4]
-    }
-    return render_template("detalles_voluntario.html", data=datos)
+    datos = data['data']
+    return render_template("detalles_voluntario.html", data=datos, cuil=cuil)
 
 @app.route("/detalles_refugio/<id>")
 def detalles_refugio(id):

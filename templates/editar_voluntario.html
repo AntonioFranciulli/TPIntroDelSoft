@@ -144,27 +144,36 @@
 {% block body %}
 <div class="d-flex justify-content-center">
   <div class="col-lg-6 col-12 d-flex flex-column align-items-center">
-    <form class="form" action="{{ url_for('edicion_voluntario') }}" method="post" >
+    <form class="form" action="{{ url_for('edicion_voluntario', cuil=cuil) }}" method="POST" >
         <p class="title">Editá el voluntario </p>
-            <div class="flex">
-            <label for="nombre_voluntario" >
-                <input required class="input" type="text" id="nombre_voluntario" name="fnombre_voluntario" placeholder="Nuevo nombre:" >
-            </label>
+        <div class="flex">
+          <label for="cuil" >
+              <input required class="input" type="text" id="cuil" name="fcuil_voluntario" placeholder="Cuil:" >
+          </label>
 
-            <label for="puesto_voluntario">
-                <input type="text" id="puesto_voluntario" name="fpuesto_voluntario" placeholder="Nuevo tipo de voluntario:" required class="input">
-            </label>
+          <label for="token">
+              <input type="text" id="token" name="ftoken" placeholder="Ingrese su token:" required class="input">
+          </label>
+        </div>
+        <h4 class="text-center">Complete todos los campos</h4>
+        <div class="flex">
+          <label for="nombre_voluntario" >
+              <input required class="input" type="text" id="nombre_voluntario" name="fnombre_voluntario" placeholder="Nombre:" >
+          </label>
+
+          <label for="puesto_voluntario">
+              <input type="text" id="puesto_voluntario" name="fpuesto_voluntario" placeholder="Tipo de voluntario:" required class="input">
+          </label>
         </div>
 
         <label for="telefono_voluntario" >
-            <input type="text" id="telefono_voluntario" name="ftelefono_voluntario" placeholder="Nuevo teléfono:" required class="input">
+            <input type="text" id="telefono_voluntario" name="ftelefono_voluntario" placeholder="Teléfono:" required class="input">
         </label>
-
-        <label for="cuil_voluntario" >
-            <input type="text" id="cuil_voluntario" name="fcuil_voluntario" placeholder="Nuevo CUIL:" required class="input">
+        <label for="refugio_a_servir" >
+            <input type="text" id="refugio_a_servir" name="frefugio_a_servir" placeholder="Refugio a ayudar:" required class="input">
         </label>
         <label for="foto_voluntario" >
-            <input type="text" id="foto_voluntario" name="ffoto_voluntario" placeholder="Link a la nueva foto de perfil:" required class="input">
+            <input type="text" id="foto_voluntario" name="ffoto_voluntario" placeholder="Link a la foto de perfil:" required class="input">
         </label>
         <button class="py-2 bg-success border-0 rounded text-white" type="submit" onclick="showAlert()">Actualizar</button>
       <script>
