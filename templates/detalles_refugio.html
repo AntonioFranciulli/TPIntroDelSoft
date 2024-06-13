@@ -5,25 +5,20 @@
   <div class="col-lg-6 col-10 d-flex flex-column">
     <div class="refugio_header d-flex justify-content-between w-100 pr-4 mb-3">
       <h1>Refugio: {{refugio['nombre_refugio']}}</h1>
-      <a href="https://google.com/maps/search/?api=1&query=paseo+colon+850" target="_blank">
+      <a href="https://google.com/maps/search/{{refugio['direccion']}}" target="_blank">
         <button class="px-3 py-2 rounded border border-primary bg-primary text-white">¿Cómo ir?</button>
       </a>
-      <a href="{{url_for('edicion_refugio')}}" target="_blank">
+      <a href="{{url_for('edicion_refugio', id=refugio['id_refugio'])}}" target="_blank">
         <button class="px-3 py-2 rounded border border-primary bg-primary text-white">Editar</button>
       </a>
     </div>
     <h3>{{refugio['descripcion']}}
     </h3>
     <section class="w-100 mb-4">
-      <img class="img-fluid img-thumbnail"
-        src="https://media.lacapital.com.ar/p/90db6f8482a928b1aa2fd723ea31f14f/adjuntos/203/imagenes/100/071/0100071190/1200x675/smart/image-13png.png"
-        alt="Nombre de la persona"
-        style="width: 100%; height: auto; border-radius: 4px;"
-        />
+      <img class="img-fluid img-thumbnail" src="{{refugio['link_foto']}}" alt="Imagen del Refugio"
+        style="width: 100%; height: auto; border-radius: 4px;" />
     </section>
-    <p class="m-0 mb-2"
-      style="font-size: 18px; color: black;"
-      >
+    <p class="m-0 mb-2" style="font-size: 18px; color: black;">
       Tipo de refugio: {{refugio['tipo_refugio']}}</p>
     <h4 style="font-size: 18px;">Contacto:</h4>
     <ul class="pl-3" style="font-size: 18px; color: black;">
@@ -32,9 +27,10 @@
       <li class="fs-4">Mail: manosabiertas@example.com</li>
       <h4 style="font-size: 18px;">Voluntarios:</h4>
       <ul class="ml-4">
-          {% for cuil, puesto, telefono, nombre, refugio in voluntarios %}
-            <li><a href="{{url_for('detalles_voluntario', cuil=cuil)}}">{{ nombre }}</a></li>
-          {% endfor %}
+        {% for voluntario in voluntarios %}
+        <li><a href="{{url_for('detalles_voluntario', cuil=voluntario[0])}}">{{voluntario[3]}}, {{voluntario[1]}}</a>
+        </li>
+        {% endfor %}
       </ul>
     </ul>
   </div>
