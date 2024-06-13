@@ -6,11 +6,19 @@
     <section class="contenedor_img-perfil mb-4"
       style="max-width: 350px;"
       >
-      <img class="voluntario_img-perfil img-fluid img-thumbnail"
-        src="{{ data['link_foto']}} "
-        alt="{{ data['nombre'] }}"
-        style="max-width: 100%; height: auto; border-radius: 4px;"
-        /> <!-- Deberia ser dinamico -->
+      {% if not data['link_foto'] %}
+        <img class="voluntario_img-perfil img-fluid img-thumbnail"
+          src="https://static.vecteezy.com/system/resources/previews/009/734/564/non_2x/default-avatar-profile-icon-of-social-media-user-vector.jpg" 
+          alt="Foto de perfil"
+          style="max-width: 100%; height: auto; border-radius: 4px;"
+          >
+      {% else %}
+        <img class="voluntario_img-perfil img-fluid img-thumbnail"
+          src="{{ data['link_foto']}} "
+          alt="{{ data['nombre'] }}"
+          style="max-width: 100%; height: auto; border-radius: 4px;"
+          /> <!-- Deberia ser dinamico -->
+      {% endif %}
     </section>
     <section class="contenedor-informacion d-flex flex-column justify-content-between">
       <div class="informacion">

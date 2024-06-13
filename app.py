@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("feed.html")
+    return redirect(url_for('feed'))
 
 @app.errorhandler(400)
 def bad_request(e):
