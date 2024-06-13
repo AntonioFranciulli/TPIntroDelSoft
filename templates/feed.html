@@ -86,19 +86,18 @@
 {% endblock %}
 
 {% block body %}
-<h1 class="titulo">REFUGIOS</h1>
+<h1 class="titulo mb-2">REFUGIOS</h1>
 {% for refugio in refugios %}
-<div class="container-fluid d-flex justify-content-center">
+<div class="container-fluid d-flex justify-content-center mb-5">
   <a href="{{url_for('detalles_refugio', id=refugio['id'])}}" style="text-decoration: none; color: inherit;">
     <div class="card">
-      <img src="{{refugio['link_foto']}}" alt="Imagen refugio">
+      <img src="{{refugio['foto']}}" alt="Imagen refugio">
       <div class="card__content">
         <p class="card__title">{{refugio['nombre']}}</p>
         <p class="card__subtitle">{{refugio['direccion']}}</p>
         <p class="card__description">{{refugio['descripcion']}}</p>
         <p>Tipo de refugio: {{refugio['tipo']}}</p>
         <p>Teléfono: {{refugio['telefono']}}</p>
-        <p>Mail: manosabiertas@example.com</p>
       </div>
     </div>
   </a>
