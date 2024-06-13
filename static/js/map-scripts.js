@@ -19,6 +19,12 @@ fetch('http://127.0.0.1:5050/obtener_refugios_geojson')
     const nav = new mapboxgl.NavigationControl()
     map.addControl(nav)
 
+      // Agrego menu de direcciones al mapa.
+    const directions = new MapboxDirections({
+      accessToken: mapboxgl.accessToken
+    });
+
+    map.addControl(directions, 'top-left');
 
     // Funcion que recibe un archivo geojson, toma los valores de title (nombre del lugar/refugio) 
     // y address (direccion del refugio) y genera un nuevo geojson con una descripción que se mostrará 
