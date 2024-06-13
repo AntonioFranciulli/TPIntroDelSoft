@@ -1,4 +1,4 @@
-from flask import Flask,render_template,redirect,url_for,request
+from flask import Flask, render_template, redirect, url_for, request
 import requests
 import json
 
@@ -41,14 +41,19 @@ def data_return(tipo):
                 request.form.get("frefugio_a_servir")
                 )
     elif tipo == "refugio":
+        calle = request.form.get("fdireccion_refugio")
+        barrio = request.form.get("fbarrio_refugio")
+        ciudad = request.form.get("fciudad_refugio")
+        postal = request.form.get("fpostal_refugio")
+        pais = request.form.get("fpais_refugio")
+        direccion = [calle, barrio, ciudad, postal, pais]
+        direccion = ", ".join(direccion) #SE JUNTAN LOS DATOS DE LA DIRECCION CON COMA PARA SER UTILIZADO POR MAPBOX
         return (request.form.get("fnombre_refugio"),
-                request.form.get("fdireccion_refugio"),
+                direccion,
                 request.form.get("fdescripcion_refugio"),
                 request.form.get("ftipo_refugio"),
                 request.form.get("ftelefono_refugio"),
-                request.form.get("fusuario_refugio"), #TODO: USUARIO NO ESTÁ IMPLEMENTADO AUN
                 request.form.get("fimagen_refugio"))
-
 
 
 @app.route("/voluntario_cargado", methods = ["GET","POST"])
@@ -134,7 +139,6 @@ def cargar_refugio():
     return render_template("cargar_refugio.html")
 
 
-
 @app.route("/mapa")
 def mapa():
     # TO DO: Aca iria una llamada a la API para leer todos los refugios de la base de datos,
@@ -142,5 +146,5 @@ def mapa():
     return render_template("mapa.html")
 
 
-if __name__ == '__main__': 
-   app.run(host='127.0.0.1', port=8080)
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=8080)

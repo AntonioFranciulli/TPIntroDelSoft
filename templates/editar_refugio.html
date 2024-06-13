@@ -149,6 +149,7 @@
     <form class="form" action="{{url_for('edicion_refugio')}}" method="post">
       <p class="title">Editar refugio </p>
       <div class="flex">
+
         <label for="nombre_refugio">
           <input type="text" id="nombre_refugio" name="fnombre_refugio" placeholder="Nuevo nombre:" required class="input">
         </label>
@@ -159,18 +160,37 @@
       </div>
 
       <label for="direccion_refugio">
-        <input type="text" id="direccion_refugio" name="fdireccion_refugio" placeholder="Nueva direccción:" required class="input">
+        <input type="text" id="direccion_refugio" name="fdireccion_refugio" placeholder="Nueva direccion:" required class="input">
+      </label>
+
+      <label for="barrio_refugio">
+        <input type="text" id="barrio_refugio" name="fbarrio_refugio" placeholder="Nuevo barrio:" required class="input">
+      </label>
+
+      <label for="ciudad_refugio">
+        <input type="text" id="ciudad_refugio" name="fciudad_refugio" placeholder="Nueva ciudad:" required class="input">
+      </label>
+
+      <label for="postal_refugio">
+        <input type="text" id="postal_refugio" name="fpostal_refugio" placeholder="Nuevo código postal:" required class="input">
+      </label>
+
+      <label for="pais_refugio">
+        <input type="text" id="pais_refugio" name="fpais_refugio" placeholder="Nuevo país:" required class="input">
       </label>
 
       <label for="telefono_refugio">
         <input type="number" id="telefono_refugio" name="ftelefono_refugio" placeholder="Nuevo teléfono:" required class="input">
       </label>
+
       <label for="imagen_refugio">
         <input type="text" id="imagen_refugio" name="fimagen_refugio" placeholder="Link de la nueva imagen:" required class="input" >
       </label>
+
       <label for="descripcion_refugio">
         <input type="text" id="descripcion_refugio" name="fdescripcion_refugio" placeholder="Nueva descripción:" required class="input">
       </label>
+
       <button class="py-2 bg-success border-0 rounded text-white" type="submit" onclick="showAlert()">Actualizar</button>
       <script>
         function showAlert() {
