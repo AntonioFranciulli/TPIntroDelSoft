@@ -65,7 +65,7 @@ def cargar_voluntario():
             "puesto": puesto,
             "telefono": telefono,
             'cuil_voluntario': int(cuil),
-            # 'foto': foto,
+            'link_foto': foto,
             'nombre_refugio': refugio
         }
         data_json = json.dumps(datos)
@@ -75,12 +75,25 @@ def cargar_voluntario():
         return redirect(url_for("feed"))
     return render_template("cargar_voluntario.html")
 
-@app.route("/edicion_refugio",methods = ["GET","POST"])
-def edicion_refugio():
+
+@app.route("/edicion_refugio/<id>",methods = ["GET","POST"])
+def edicion_refugio(id):
     if request.method == "POST":
-        nombre, direccion, descripcion, tipo, telefono, usuario, foto = data_return("refugio")
-        return render_template("detalles_refugio.html")
-    return render_template("editar_refugio.html")
+        nombre_refugio, direccion, descripcion, tipo, telefono, usuario, foto = data_return("refugio")
+        datos = {
+            "nombre_refugio": nombre_refugio,
+            "direccion": direccion,
+            "descripcion": descripcion,
+            "tipo_refugio": tipo,
+            "telefono": telefono,
+            "link_foto": foto
+        }
+        datos_json = json.dumps(datos)
+        URL = "http://127.0.0.1:5050/refugios/"+id #completar url con la direccion donde corre su api local
+        res = requests.patch(URL, data=datos_json, headers={'Content-Type': 'application/json'})
+        if res.status_code == 200:
+            return redirect(url_for('detalles_refugio', id=id))
+    return render_template("editar_refugio.html", id=id)
 
 @app.route("/edicion_voluntario/<cuil>", methods = ["GET","POST"])
 def edicion_voluntario(cuil):

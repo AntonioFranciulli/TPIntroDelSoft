@@ -91,7 +91,7 @@
 <div class="container-fluid d-flex justify-content-center">
   <a href="{{url_for('detalles_refugio', id=refugio['id'])}}" style="text-decoration: none; color: inherit;">
     <div class="card">
-      <img src="https://media.lacapital.com.ar/p/90db6f8482a928b1aa2fd723ea31f14f/adjuntos/203/imagenes/100/071/0100071190/1200x675/smart/image-13png.png" alt="Manos Abiertas Refugio">
+      <img src="{{refugio['link_foto']}}" alt="Imagen refugio">
       <div class="card__content">
         <p class="card__title">{{refugio['nombre']}}</p>
         <p class="card__subtitle">{{refugio['direccion']}}</p>
