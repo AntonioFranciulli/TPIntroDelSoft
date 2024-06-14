@@ -152,10 +152,14 @@
             </label>
   
             <label for="tipo_voluntario">
-                <input type="text" id="tipo_voluntario" name="fpuesto_voluntario" placeholder="Voluntariado para:" required class="input">
+                <input type="text" id="tipo_voluntario" name="fpuesto_voluntario" placeholder="Puesto:" required class="input">
             </label>
         </div>  
-                
+        
+        <label for="refugio_a_servir" >
+            <input type="text" id="refugio_a_servir" name="frefugio_a_servir" placeholder="¿En que refugio?" required class="input">
+        </label> 
+
         <label for="telefono_voluntario" >
             <input type="text" id="telefono_voluntario" name="ftelefono_voluntario" placeholder="Teléfono" required class="input">
         </label> 
@@ -164,10 +168,10 @@
             <input type="text" id="cuil_voluntario" name="fcuil_voluntario" placeholder="CUIL" required class="input">
         </label>
         <label for="foto_voluntario" >
-            <input type="text" id="foto_voluntario" name="ffoto_voluntario" placeholder="Link a su foto de perfil"  required class="input">
+            <input type="text" id="foto_voluntario" name="ffoto_voluntario" placeholder="Link a su foto de perfil"  required class="input" maxlength="254">
         </label>
         <button class="py-2 bg-success border-0 rounded text-white" type="submit" onclick="showAlert()">Aceptar</button>
-      <script>
+<!--       <script>
         function showAlert() {
           const inputs = document.querySelectorAll('.input');
           let allFilled = true;
@@ -184,7 +188,7 @@
             alert("Por favor, rellene todos los campos.");
           }
 }
-      </script>
+      </script> -->
     </form>
   </div>
 </div>

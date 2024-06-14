@@ -6,24 +6,32 @@
     <section class="contenedor_img-perfil mb-4"
       style="max-width: 350px;"
       >
-      <img class="voluntario_img-perfil img-fluid img-thumbnail"
-        src="https://img.freepik.com/vector-premium/icono-perfil-humano-ilustracion-vectorial-genero_276184-158.jpg"
-        alt="Nombre de la persona"
-        style="max-width: 100%; height: auto; border-radius: 4px;"
-        /> <!-- Deberia ser dinamico -->
+      {% if not data['link_foto'] %}
+        <img class="voluntario_img-perfil img-fluid img-thumbnail"
+          src="https://static.vecteezy.com/system/resources/previews/009/734/564/non_2x/default-avatar-profile-icon-of-social-media-user-vector.jpg" 
+          alt="Foto de perfil"
+          style="max-width: 100%; height: auto; border-radius: 4px;"
+          >
+      {% else %}
+        <img class="voluntario_img-perfil img-fluid img-thumbnail"
+          src="{{ data['link_foto']}} "
+          alt="{{ data['nombre'] }}"
+          style="max-width: 100%; height: auto; border-radius: 4px;"
+          /> <!-- Deberia ser dinamico -->
+      {% endif %}
     </section>
     <section class="contenedor-informacion d-flex flex-column justify-content-between">
       <div class="informacion">
-        <h2>Voluntario: John Doe</h2> <!-- Esto deberia ser dinamico -->
-        <h3>Refugio: Manos Abiertas</h3> <!-- Quiza podria ser un link a la pagina del refugio -->
-        <p class="m-0">Tipo de ayuda voluntaria: Cocinero</p> <!-- Esto deberia ser dinamico -->
-        <ul class="">
-          Contacto:
-          <li>Telefono: +54 9 11 ****-****</li>
-          <li>Email: johndoe@example.com</li>
-        </ul>
+        <h2>Voluntario: {{ data['nombre'] }}</h2> <!-- Esto deberia ser dinamico -->
+        <h3>Refugio: 
+          <a href="{{ url_for('detalles_refugio', id=data['id_refugio']) }}">
+            {{ data['nombre_refugio'] }}
+          </a>
+        </h3> <!-- Quiza podria ser un link a la pagina del refugio -->
+        <p class="m-0 mb-1" style="font-size: 18px;">Tipo de ayuda voluntaria: {{ data['puesto'] }}</p> <!-- Esto deberia ser dinamico -->
+        <p class="m-0" style="font-size: 18px;">Telefono: {{ data['telefono'] }} </p>
       </div>
-      <a class="mt-4" href="{{url_for('edicion_voluntario')}}">
+      <a class="mt-4" href="{{ url_for('edicion_voluntario', cuil=data['cuil_voluntario'])}}">
         <button class="px-3 py-2 rounded border border-primary bg-primary text-white">Editar</button>
       </a>
     </section>
