@@ -69,7 +69,7 @@ def cargar_voluntario():
             'nombre_refugio': refugio
         }
         data_json = json.dumps(datos)
-        URL = "http://127.0.0.1:5050/crear_voluntario"
+        URL = "http://pedrogillen.pythonanywhere.com/crear_voluntario"
         res = requests.post(URL, data=data_json, headers={'Content-Type': 'application/json'})
         #Falta decidir que hacer dependiendo de la response
         return redirect(url_for("feed"))
@@ -89,7 +89,7 @@ def edicion_refugio(id):
             "link_foto": foto
         }
         datos_json = json.dumps(datos)
-        URL = "http://127.0.0.1:5050/refugios/"+id #completar url con la direccion donde corre su api local
+        URL = "http://pedrogillen.pythonanywhere.com/refugios/"+id #completar url con la direccion donde corre su api local
         res = requests.patch(URL, data=datos_json, headers={'Content-Type': 'application/json'})
         if res.status_code == 200:
             return redirect(url_for('detalles_refugio', id=id))
@@ -99,7 +99,7 @@ def edicion_refugio(id):
 def edicion_voluntario(cuil):
     if request.method == "POST":
         nombre, puesto, telefono, cuil_vol, foto, refugio = data_return("voluntario")
-        URL = "http://127.0.0.1:5050/modificar_voluntario/" + cuil_vol
+        URL = "http://pedrogillen.pythonanywhere.com/modificar_voluntario/" + cuil_vol
         token = request.form.get("ftoken")
         datos = {
             "nombre": nombre,
@@ -116,7 +116,7 @@ def edicion_voluntario(cuil):
 
 @app.route("/detalles_voluntario/<cuil>")
 def detalles_voluntario(cuil):
-    URL = "http://127.0.0.1:5050/obtener_voluntario/" + cuil #completar url con la direccion donde corre su api local
+    URL = "http://pedrogillen.pythonanywhere.com/obtener_voluntario/" + cuil #completar url con la direccion donde corre su api local
     res = requests.get(URL)
     data = json.loads(res.text)
     datos = data['data']
@@ -124,7 +124,7 @@ def detalles_voluntario(cuil):
 
 @app.route("/detalles_refugio/<id>")
 def detalles_refugio(id):
-    URL = "http://127.0.0.1:5050/obtener_refugio/" + id #completar url con la direccion donde corre su api local
+    URL = "http://pedrogillen.pythonanywhere.com/obtener_refugio/" + id #completar url con la direccion donde corre su api local
     res = requests.get(URL)
     data = json.loads(res.text)
     refugio = data['data_refugio']
@@ -133,7 +133,7 @@ def detalles_refugio(id):
 
 @app.route("/feed")
 def feed():
-    URL = "http://127.0.0.1:5050/obtener_refugios" #completar url con la direccion donde corre su api local
+    URL = "http://pedrogillen.pythonanywhere.com/obtener_refugios" #completar url con la direccion donde corre su api local
     result = requests.get(URL)
     refugios = json.loads(result.text)
     return render_template("feed.html", refugios=refugios)
@@ -151,7 +151,7 @@ def cargar_refugio():
             "link_foto": foto
         }
         datos_json = json.dumps(datos)
-        URL = "http://127.0.0.1:5050/crear_refugio" #completar url con la direccion donde corre su api local
+        URL = "http://pedrogillen.pythonanywhere.com/crear_refugio" #completar url con la direccion donde corre su api local
         result = requests.post(URL, data=datos_json, headers={'Content-Type': 'application/json'})
         return redirect("/feed")
     return render_template("cargar_refugio.html")
