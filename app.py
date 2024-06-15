@@ -3,10 +3,10 @@ import requests
 import json
 
 app = Flask(__name__)
-
 @app.route("/")
 def home():
-    return redirect(url_for('feed'))
+    return render_template("home.html")
+
 
 @app.errorhandler(400)
 def bad_request(e):

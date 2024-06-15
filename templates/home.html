@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block head %}
+<style>
+    .titulo {
+        font-family: 'Merriweather', serif;
+        font-size: 70px;
+        font-weight: bold;
+        padding-bottom: 10px;
+        text-align: center;
+        margin-top: 20px;
+        color: #333;
+        border-bottom: 2px solid #333;
+        
+    }
+    .subtitulo {
+        text-align: center;
+        font-size: 30px;
+        color: #555;
+        margin-top: 20px;
+    }
+    body{
+        color:#666
+    }
+    .contenido {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        font-size: 50px;
+        margin: 20px auto;
+        padding: 20px;
+        width: 80%;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .image-text-container{
+        display:flex;
+        align-items:center;
+        justify-content: center;
+        gap:40px;
+        margin: top 40px;
+    }
+    .image-text-container img{
+        max-width: 100%;
+        height:auto;
+    }
+    .image-text-container.texto{
+        flex:1;
+        text-align:left;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div class="contenido">
+    <h1 class="titulo">CALLE SOLIDARIA</h1>
+    <h3 class="subtitulo">Dándole ayuda a los que más la necesitan</h3>
+    <div class="image-text-container">
+    <a href="{{url_for('about_us')}}">
+    <img  class="imagen" src="{{url_for('static',filename='images/callesolidaria.png')}}" alt="Calle Solidaria">
+    </a>
+    </div>
+</div>
+{% endblock %}
