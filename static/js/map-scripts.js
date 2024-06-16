@@ -1,8 +1,8 @@
 // Variable global hardcodeada de momento, lo ideal seria que cada uno use su propio token de mapbox localmente en su codigo
-mapboxgl.accessToken = 'pk.eyJ1IjoiYW50b25pb2ZyYW5jaXVsbGkiLCJhIjoiY2x4N3J4a2p5MHd2ajJycG1sZmU2ZWZvcSJ9.0hdKusxNrisOijQEdlLSrg';
+mapboxgl.accessToken = 'pk.eyJ1IjoicGVkcm9naWxsZW4iLCJhIjoiY2x4OWh3MDY0MW1yZjJrbjJudWY4ajZtaCJ9.aPLZCwmpfLWc037yNl6tsQ';
 
 // aca se capta el geojson que proporciona la api 
-fetch('http://127.0.0.1:5050/obtener_refugios_geojson')
+fetch('http://pedrogillen.pythonanywhere.com/obtener_refugios_geojson')
   .then(response => response.json())
   .then(data => {
     var geojson_refugios = data;
