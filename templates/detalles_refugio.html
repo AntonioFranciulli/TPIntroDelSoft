@@ -9,11 +9,11 @@
       <div class="col-md-7 text-left">
         <div class="display-t">
           <div class="display-tc animate-box" data-animate-effect="fadeInUp">
-            <h1>Refugio: Manos Abiertas</h1>
-            <a href="https://google.com/maps/search/?api=1&query=paseo+colon+850" target="_blank">
+            <h1>Refugio: {{refugio['nombre_refugio']}}</h1>
+            <a href="{{url_for('mapa')}}" target="_blank">
               <button class="px-3 py-2 rounded border border-primary bg-primary text-white">¿Cómo ir?</button>
             </a>
-            <a href="{{url_for('edicion_refugio')}}" target="_blank">
+            <a href="{{url_for('edicion_refugio', id=refugio['id_refugio'])}}" target="_blank">
               <button class="px-3 py-2 rounded border border-primary bg-primary text-white">Editar</button>
             </a>
           </div>
@@ -28,16 +28,21 @@
       <div class="col-md-12">
         <ul id="gtco-post-list">
               <div class="entry-desc">
-                <h3>El refugio "Manos Abiertas" abrió sus puertas en 2016 y desde entonces ayuda a quienes mas lo 
-                  necesitan. Si necesitás un lugar para dormir esta noche no dudes en venir.</h3>
-                  <img class="img-fluid img-thumbnail"
-                  src="https://media.lacapital.com.ar/p/90db6f8482a928b1aa2fd723ea31f14f/adjuntos/203/imagenes/100/071/0100071190/1200x675/smart/image-13png.png"
-                  alt="Nombre de la persona"
-                  style="width: 100%; height: auto; border-radius: 4px;"
-                  />
-                <p>Teléfono: 1234-6789</p>
-                <p>Dirección: Paseo Colón 850</p>
-                <p>Voluntarios:</p>
-                <a href="{{url_for('detalles_voluntario')}}">Jhon Doe</a>
+                <h3>{{refugio['descripcion']}}</h3>
+                <img class="img-fluid img-thumbnail" src="{{refugio['link_foto']}}" alt="Imagen del Refugio" style="width: 100%; height: auto; border-radius: 4px;" />
+                <p class="m-0 mb-2" style="font-size: 18px; color: black;">
+                  Tipo de refugio: {{refugio['tipo_refugio']}}</p>
+                <h4 style="font-size: 18px;">Contacto:</h4>
+                <ul class="pl-3" style="font-size: 18px; color: black;">
+                  <li>Teléfono: {{refugio['telefono']}}</li>
+                  <li>Dirección: {{refugio['direccion']}}</li>
+                  <h4 style="font-size: 18px;">Voluntarios:</h4>
+                  <ul class="ml-4">
+                    {% for voluntario in voluntarios %}
+                    <li><a href="{{url_for('detalles_voluntario', cuil=voluntario[0])}}">{{voluntario[3]}}, {{voluntario[1]}}</a>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                </ul>
               </div>
 {% endblock %}
