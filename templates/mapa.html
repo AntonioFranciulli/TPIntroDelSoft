@@ -1,19 +1,20 @@
 {% extends "base.html" %}
 {% block body %}
-<header>
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-7 text-left">
-          <div class="display-t">
-            <div class="display-tc animate-box" data-animate-effect="fadeInUp">
-              
-            </div>
-          </div>
-        </div>
+
+<header id="gtco-header" role="banner" style="background-image:url(images/img_1.jpg);" data-stellar-background-ratio="0.5">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 text-left">
+        <div class="display-t">
+     
       </div>
     </div>
-  </header>
+  </div>
+</header>
+
+
+<div id="gtco-main">
   <div id="map">
     <!-- mapbox styles css & js scripts-->
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
@@ -25,4 +26,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/map-style.css')}}">
     <script defer src="static/js/map-scripts.js"></script>
 </div>
+</div>
+
+
 {% endblock %}

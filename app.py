@@ -3,10 +3,6 @@ import requests
 import json
 
 app = Flask(__name__)
-@app.route("/")
-def home():
-    return render_template("home.html")
-
 
 @app.errorhandler(400)
 def bad_request(e):
@@ -131,7 +127,7 @@ def detalles_refugio(id):
     voluntarios = data['voluntarios']
     return render_template("detalles_refugio.html", refugio=refugio, voluntarios=voluntarios)
 
-@app.route("/feed")
+@app.route("/")
 def feed():
     URL = "http://pedrogillen.pythonanywhere.com/obtener_refugios" #completar url con la direccion donde corre su api local
     result = requests.get(URL)

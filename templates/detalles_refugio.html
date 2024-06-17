@@ -33,16 +33,12 @@
                 <p class="m-0 mb-2" style="font-size: 18px; color: black;">
                   Tipo de refugio: {{refugio['tipo_refugio']}}</p>
                 <h4 style="font-size: 18px;">Contacto:</h4>
-                <ul class="pl-3" style="font-size: 18px; color: black;">
-                  <li>Teléfono: {{refugio['telefono']}}</li>
-                  <li>Dirección: {{refugio['direccion']}}</li>
-                  <h4 style="font-size: 18px;">Voluntarios:</h4>
-                  <ul class="ml-4">
-                    {% for voluntario in voluntarios %}
-                    <li><a href="{{url_for('detalles_voluntario', cuil=voluntario[0])}}">{{voluntario[3]}}, {{voluntario[1]}}</a>
-                    </li>
-                    {% endfor %}
-                  </ul>
-                </ul>
+                <p>Teléfono: {{refugio['telefono']}}</p>
+                <p>Dirección: {{refugio['direccion']}}</p>
+              
+                <h4 style="font-size: 18px;">Voluntarios:</h4>
+                {% for voluntario in voluntarios %}
+                <p><a href="{{url_for('detalles_voluntario', cuil=voluntario[0])}}">{{voluntario[3]}}, {{voluntario[1]}}</a></p>
+                {% endfor %}
               </div>
 {% endblock %}

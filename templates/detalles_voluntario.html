@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 
+
 {% block body %}
+
+<style>
+  .foto{
+    width:30%;
+    height:60%;
+  }
+</style>
 
 <header id="gtco-header" class="gtco-cover" role="banner" style="background-image:url(images/img_1.jpg);" data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
@@ -23,16 +31,18 @@
         <ul id="gtco-post-list">
               <div class="entry-desc">
                 {% if not data['link_foto'] %}
-                  <img class="voluntario_img-perfil img-fluid img-thumbnail"
+                  <img 
                     src="https://static.vecteezy.com/system/resources/previews/009/734/564/non_2x/default-avatar-profile-icon-of-social-media-user-vector.jpg" 
                     alt="Foto de perfil"
-                    style="max-width: 100%; height: auto; border-radius: 4px;"
+                    class="foto"
+              
                     >
                 {% else %}
-                  <img class="voluntario_img-perfil img-fluid img-thumbnail"
+                  <img 
                     src="{{ data['link_foto']}} "
                     alt="{{ data['nombre'] }}"
-                    style="max-width: 100%; height: auto; border-radius: 4px;"
+                    class="foto"
+                   
                     /> <!-- Deberia ser dinamico -->
                 {% endif %}
                 <h3>Refugio: 

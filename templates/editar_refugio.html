@@ -139,6 +139,10 @@
       opacity: 0;
     }
   }
+  
+  .arreglo{
+      padding-top: 30%;
+    }
 </style>
 <header id="gtco-header" class="gtco-cover" role="banner" style="background-image:url(images/img_1.jpg);" data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
@@ -147,7 +151,7 @@
       <div class="col-md-7 text-left">
         <div class="display-t">
           <div class="display-tc animate-box" data-animate-effect="fadeInUp">
-            <form class="form" action="{{url_for('edicion_refugio',id=id)}}" method="post">
+            <div class="arreglo"><form class="form" action="{{url_for('edicion_refugio',id=id)}}" method="post">
               <p class="title">Editar refugio </p>
               <div class="flex">
         
@@ -211,7 +215,8 @@
                   }
               }
               </script>  -->
-            </form>
+            </form></div>
+            
           </div>
         </div>
       </div>
