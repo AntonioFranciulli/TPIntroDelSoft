@@ -1,12 +1,8 @@
 {% extends "base.html" %}
-{% block head %}
-<style>
-  .centered__content {
-    padding-left: 500px;
-    margin: auto;
-    transform: scale(1);
 
-  }
+{% block body %}
+<style>
+
 
   .form {
     display: flex;
@@ -140,39 +136,44 @@
     }
   }
 </style>
-{% endblock %}
 
-
-{% block body %}
-<div class="d-flex justify-content-center">
-  <div class="col-lg-6 col-12 d-flex flex-column align-items-center">
-    <form class="form" id="formularioRefugio">
-      <p class="title">Agrega tu refugio </p>
-      <div class="flex">
-        <label for="nombre_refugio">
-          <input type="text" id="nombre_refugio" name="nombre_refugio" placeholder="Nombre" required class="input">
-        </label>
-        <label for="direccion_refugio">
-          <input type="text" id="direccion_refugio" name="direccion" placeholder="Direccción" required class="input">
-        </label>
+<header id="gtco-header" class="gtco-cover" role="banner" style="background-image:url(images/img_1.jpg);" data-stellar-background-ratio="0.5">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 text-left">
+        <div class="display-t">
+          <div class="display-tc animate-box" data-animate-effect="fadeInUp">
+            <form class="form" id="formularioRefugio">
+              <p class="title">Agrega tu refugio </p>
+              <div class="flex">
+                <label for="nombre_refugio">
+                  <input type="text" id="nombre_refugio" name="nombre_refugio" placeholder="Nombre" required class="input">
+                </label>
+                <label for="direccion_refugio">
+                  <input type="text" id="direccion_refugio" name="direccion" placeholder="Direccción" required class="input">
+                </label>
+              </div>
+              <label for="descripcion_refugio">
+                <input type="text" id="descripcion_refugio" name="descripcion" placeholder="Descripción" class="input">
+              </label>
+              <label for="tipo_refugio">
+                <input type="text" id="tipo_refugio" name="tipo_refugio" placeholder="Tipo de refugio" required class="input">
+              </label>
+              <label for="telefono_refugio">
+                <input type="number" id="telefono_refugio" name="telefono" placeholder="Teléfono" required class="input">
+              </label>
+              <label for="imagen_refugio">
+                <input type="text" id="imagen_refugio" name="link_foto" placeholder="Link de la imagen" class="input" >
+              </label>
+        
+              <button class="py-2 bg-success border-0 rounded text-white" type="submit">Aceptar</button>
+            </form>
+          </div>
+        </div>
       </div>
-      <label for="descripcion_refugio">
-        <input type="text" id="descripcion_refugio" name="descripcion" placeholder="Descripción" class="input">
-      </label>
-      <label for="tipo_refugio">
-        <input type="text" id="tipo_refugio" name="tipo_refugio" placeholder="Tipo de refugio" required class="input">
-      </label>
-      <label for="telefono_refugio">
-        <input type="number" id="telefono_refugio" name="telefono" placeholder="Teléfono" required class="input">
-      </label>
-      <label for="imagen_refugio">
-        <input type="text" id="imagen_refugio" name="link_foto" placeholder="Link de la imagen" class="input" >
-      </label>
-
-      <button class="py-2 bg-success border-0 rounded text-white" type="submit">Aceptar</button>
-    </form>
+    </div>
   </div>
-</div>
-
+</header>
 
 {% endblock %}

@@ -1,5 +1,5 @@
-body { margin: 0; padding: 0; }
-#map { position: relative; padding-bottom: 40%; top: 0; bottom: 0; width: auto; }
+
+#map { position: relative; padding-bottom: 40%; top: 30%;  width: auto; padding-top: 40%;}
 
 .mapboxgl-popup {
     max-width: 400px;

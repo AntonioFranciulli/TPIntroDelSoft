@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-{% block head %}
+{% block body %}
+
 <style>
 
 .centered__content {
@@ -138,55 +139,63 @@
     }
   }
 </style>
-{% endblock %}
 
-
-{% block body %}
-<div class="d-flex justify-content-center">
-  <div class="col-lg-6 col-12 d-flex flex-column align-items-center">
-    <form class="form" action="{{ url_for('edicion_voluntario') }}" method="post" >
-        <p class="title">Editá el voluntario </p>
-            <div class="flex">
-            <label for="nombre_voluntario" >
-                <input required class="input" type="text" id="nombre_voluntario" name="fnombre_voluntario" placeholder="Nuevo nombre:" >
-            </label>
-
-            <label for="puesto_voluntario">
-                <input type="text" id="puesto_voluntario" name="fpuesto_voluntario" placeholder="Nuevo tipo de voluntario:" required class="input">
-            </label>
+<header id="gtco-header" class="gtco-cover" role="banner" style="background-image:url(images/img_1.jpg);" data-stellar-background-ratio="0.5">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 text-left">
+        <div class="display-t">
+          <div class="display-tc animate-box" data-animate-effect="fadeInUp">
+            <form class="form" action="{{ url_for('edicion_voluntario') }}" method="post" >
+              <p class="title">Editá el voluntario </p>
+                  <div class="flex">
+                  <label for="nombre_voluntario" >
+                      <input required class="input" type="text" id="nombre_voluntario" name="fnombre_voluntario" placeholder="Nuevo nombre:" >
+                  </label>
+      
+                  <label for="puesto_voluntario">
+                      <input type="text" id="puesto_voluntario" name="fpuesto_voluntario" placeholder="Nuevo tipo de voluntario:" required class="input">
+                  </label>
+              </div>
+      
+              <label for="telefono_voluntario" >
+                  <input type="text" id="telefono_voluntario" name="ftelefono_voluntario" placeholder="Nuevo teléfono:" required class="input">
+              </label>
+      
+              <label for="cuil_voluntario" >
+                  <input type="text" id="cuil_voluntario" name="fcuil_voluntario" placeholder="Nuevo CUIL:" required class="input">
+              </label>
+              <label for="foto_voluntario" >
+                  <input type="text" id="foto_voluntario" name="ffoto_voluntario" placeholder="Link a la nueva foto de perfil:" required class="input">
+              </label>
+              <button class="py-2 bg-success border-0 rounded text-white" type="submit" onclick="showAlert()">Actualizar</button>
+            <script>
+              function showAlert() {
+                const inputs = document.querySelectorAll('.input');
+                let allFilled = true;
+      
+                inputs.forEach(input => {
+                  if (input.value === '') {
+                    allFilled = false;
+                  }
+                });
+      
+                if (allFilled) {
+                  alert("Voluntario actualizado!");
+                } else {
+                  alert("Por favor, rellene todos los campos.");
+                }
+      }
+            </script>
+          </form>
+            
+          </div>
         </div>
-
-        <label for="telefono_voluntario" >
-            <input type="text" id="telefono_voluntario" name="ftelefono_voluntario" placeholder="Nuevo teléfono:" required class="input">
-        </label>
-
-        <label for="cuil_voluntario" >
-            <input type="text" id="cuil_voluntario" name="fcuil_voluntario" placeholder="Nuevo CUIL:" required class="input">
-        </label>
-        <label for="foto_voluntario" >
-            <input type="text" id="foto_voluntario" name="ffoto_voluntario" placeholder="Link a la nueva foto de perfil:" required class="input">
-        </label>
-        <button class="py-2 bg-success border-0 rounded text-white" type="submit" onclick="showAlert()">Actualizar</button>
-      <script>
-        function showAlert() {
-          const inputs = document.querySelectorAll('.input');
-          let allFilled = true;
-
-          inputs.forEach(input => {
-            if (input.value === '') {
-              allFilled = false;
-            }
-          });
-
-          if (allFilled) {
-            alert("Voluntario actualizado!");
-          } else {
-            alert("Por favor, rellene todos los campos.");
-          }
-}
-      </script>
-    </form>
+      </div>
+    </div>
   </div>
-</div>
+</header>
+
 
 {% endblock %}

@@ -1,109 +1,45 @@
 {% extends "base.html" %}
-{% block head %}
+{% block body%}
 <style>
-
-.centered__content {
-  padding-left: 450px;
-  margin: auto;
-  transform: scale(1);
-
-}
-.card {
-  position: relative;
-  width: 500px;
-  height: 350px;
-  background-color: #f2f2f2;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  perspective: 1000px;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.card svg {
-  width: 48px;
-  fill: #333;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
-}
-
-.card__content {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: auto;
-  padding: 20px;
-  box-sizing: border-box;
-  background-color: #f2f2f2;
-  transform: rotateX(-90deg);
-  transform-origin: bottom;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.card:hover .card__content {
-  transform: rotateX(0deg);
-}
-
-.card__title {
-  
-  font-size: 30px;
-  color: #111111;
-  font-weight: 700;
-}
-
-.card__subtitle {
-  margin: 14px 0 0;
-  font-size: 25px;
-  color: #111111;
-  line-height: 1.2;
-}
-
-.card:hover svg {
-  scale: 0;
-}
-.titulo {
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 36px;
-  font-weight: bold;
-  padding-bottom: 10px;
-  text-align: center;
-}
-
-.card__description {
-  margin: 10px 0 0;
-  font-size: 20px;
-  line-height: 1.4;
-  color: #111111;
-}
-
+  #fotos{
+    width: 90%;
+  }
 </style>
-{% endblock %}
 
-{% block body %}
-<h1 class="titulo">REFUGIOS</h1>
-{% for i in range(1) %}
-<div class="container-fluid d-flex justify-content-center">
-  <a href="{{url_for('detalles_refugio')}}" style="text-decoration: none; color: inherit;">
-    <div class="card">
-      <img src="https://media.lacapital.com.ar/p/90db6f8482a928b1aa2fd723ea31f14f/adjuntos/203/imagenes/100/071/0100071190/1200x675/smart/image-13png.png" alt="Manos Abiertas Refugio">
-      <div class="card__content">
-        <p class="card__title">Manos Abiertas Refugio</p>
-        <p class="card__subtitle">Av. Paseo Colón 850</p>
-        <p class="card__description">El refugio "Manos Abiertas" abrió sus puertas en 2016 y desde entonces ayuda a quienes más lo necesitan. Si necesitás un lugar para dormir esta noche no dudes en venir.</p>
-        <p>Tipo de refugio: Hospedaje por la noche</p>
-        <p>Teléfono: 1234-6789</p>
-        <p>Mail: manosabiertas@example.com</p>
+
+<header id="gtco-header" class="gtco-cover" role="banner" style="background-image:url(images/img_1.jpg);" data-stellar-background-ratio="0.5">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 text-left">
+        <div class="display-t">
+          <div class="display-tc animate-box" data-animate-effect="fadeInUp">
+            <h1 class="mb30"><a href="#">Encontra todos nuestros refugios</a></h1>
+            <p><a href="#" class="text-link">Clickea el que te interese para encontrar mas información</a></p>
+          </div>
+        </div>
       </div>
     </div>
-  </a>
-</div>
-{% endfor %}
+  </div>
+</header>
+<div id="gtco-main">
+  <div class="container">
+    <div class="row row-pb-md">
+      <div class="col-md-12">
+        <ul id="gtco-post-list">
+          <li class="full entry animate-box" data-animate-effect="fadeIn"> 
+            <a href="{{ url_for('detalles_refugio') }}">
+              <div class="entry-img">
+                <img id="fotos"  class="entry-img" src="https://media.lacapital.com.ar/p/90db6f8482a928b1aa2fd723ea31f14f/adjuntos/203/imagenes/100/071/0100071190/1200x675/smart/image-13png.png" alt="Manos Abiertas Refugio">
+              </div>
+              <div class="entry-desc">
+                <h3>Manos Abiertas Refugio</h3>
+                <p>Av. Paseo Colón 850</p>
+                <p>El refugio "Manos Abiertas" abrió sus puertas en 2016 y desde entonces ayuda a quienes más lo necesitan. Si necesitás un lugar para dormir esta noche no dudes en venir.</p>
+                <p>Tipo de refugio: Hospedaje por la noche</p>
+                <p>Teléfono: 1234-6789</p>
+                <p>Mail: manosabiertas@example.com</p>
+              </div>
 {% endblock %}
 
 

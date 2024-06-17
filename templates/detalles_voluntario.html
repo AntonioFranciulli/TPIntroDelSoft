@@ -1,32 +1,41 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<main class="detalle-vol container-fluid d-flex justify-content-center my-4">
-  <div class="col-lg-7 col-12 d-flex flex-column align-items-center">
-    <section class="contenedor_img-perfil mb-4"
-      style="max-width: 350px;"
-      >
-      <img class="voluntario_img-perfil img-fluid img-thumbnail"
-        src="https://img.freepik.com/vector-premium/icono-perfil-humano-ilustracion-vectorial-genero_276184-158.jpg"
-        alt="Nombre de la persona"
-        style="max-width: 100%; height: auto; border-radius: 4px;"
-        /> <!-- Deberia ser dinamico -->
-    </section>
-    <section class="contenedor-informacion d-flex flex-column justify-content-between">
-      <div class="informacion">
-        <h2>Voluntario: John Doe</h2> <!-- Esto deberia ser dinamico -->
-        <h3>Refugio: Manos Abiertas</h3> <!-- Quiza podria ser un link a la pagina del refugio -->
-        <p class="m-0">Tipo de ayuda voluntaria: Cocinero</p> <!-- Esto deberia ser dinamico -->
-        <ul class="">
-          Contacto:
-          <li>Telefono: +54 9 11 ****-****</li>
-          <li>Email: johndoe@example.com</li>
-        </ul>
+
+<header id="gtco-header" class="gtco-cover" role="banner" style="background-image:url(images/img_1.jpg);" data-stellar-background-ratio="0.5">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 text-left">
+        <div class="display-t">
+          <div class="display-tc animate-box" data-animate-effect="fadeInUp">
+            <h1>John Doe</h1>
+    
+          </div>
+        </div>
       </div>
-      <a class="mt-4" href="{{url_for('edicion_voluntario')}}">
-        <button class="px-3 py-2 rounded border border-primary bg-primary text-white">Editar</button>
-      </a>
-    </section>
+    </div>
   </div>
-</main>
+</header>
+<div id="gtco-main">
+  <div class="container">
+    <div class="row row-pb-md">
+      <div class="col-md-12">
+        <ul id="gtco-post-list">
+              <div class="entry-desc">
+                
+                <img class="voluntario_img-perfil img-fluid img-thumbnail"
+                src="https://img.freepik.com/vector-premium/icono-perfil-humano-ilustracion-vectorial-genero_276184-158.jpg"
+                alt="Nombre de la persona"
+                style="max-width: 100%; height: auto; border-radius: 4px;"
+                />
+                <p>Refugio: Manos Abiertas</p>
+                <p>Tipo de ayuda voluntaria: Cocinero</p>
+                <p>Telefono: +54 9 11 ****-****</p>
+                <p>Email: johndoe@example.com</p>
+                <a class="mt-4" href="{{url_for('edicion_voluntario')}}">
+                  <button class="px-3 py-2 rounded border border-primary bg-primary text-white">Editar</button>
+                </a>
+              
+              </div>
 {% endblock %}
