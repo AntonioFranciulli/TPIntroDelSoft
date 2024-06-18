@@ -1,6 +1,49 @@
 {% extends "base.html" %}
 {% block head %}
+
+<script src="search.js" defer></script>
+
 <style>
+
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.search input[type="text"] {
+  width: 450px;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search button[type="submit"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #4e99e9;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  top: 0;
+  right: 0;
+  transition: .9s ease;
+}
+
+.search button[type="submit"]:hover {
+  transform: scale(1.1);
+  color: rgb(255, 255, 255);
+  background-color: blue;
+}
+
 
 .centered__content {
   padding-left: 450px;
@@ -68,9 +111,10 @@
   scale: 0;
 }
 .titulo {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Raleway', cursive, serif;
   font-size: 36px;
   font-weight: bold;
+    font-style: italic;
   padding-bottom: 10px;
   text-align: center;
 }
@@ -86,6 +130,15 @@
 {% endblock %}
 
 {% block body %}
+<form class="searchbar" action="{{ url_for('feed') }}" method="post">
+    <div class="search">
+        <label for="search_input">
+            <input placeholder="Buscar refugio o tipo de refugio" type="text" id="search_input" name="fsearch_input" class="input">
+        </label>
+            <button type="submit">Ir</button>
+  </div>
+</form>
+
 <h1 class="titulo mb-2">REFUGIOS</h1>
 {% for refugio in refugios %}
 <div class="container-fluid d-flex justify-content-center mb-5">

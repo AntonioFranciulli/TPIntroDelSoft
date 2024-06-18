@@ -125,11 +125,18 @@ def detalles_refugio(id):
     voluntarios = data['voluntarios']
     return render_template("detalles_refugio.html", refugio=refugio, voluntarios=voluntarios)
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def feed():
     URL = "http://pedrogillen.pythonanywhere.com/obtener_refugios"
     result = requests.get(URL)
     refugios = json.loads(result.text)
+    if request.method == "POST":
+        refugios_filtrados = []
+        filtro = request.form.get("fsearch_input")
+        for refugio in refugios:
+            if (filtro.lower() in refugio["nombre"].lower()) or (filtro.lower() in refugio["tipo"].lower()):
+                refugios_filtrados.append(refugio)
+        return render_template("feed.html", refugios=refugios_filtrados)
     return render_template("feed.html", refugios=refugios)
 
 @app.route("/cargar_refugio", methods = ["GET","POST"])
