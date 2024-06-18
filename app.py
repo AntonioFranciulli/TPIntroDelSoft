@@ -3,10 +3,6 @@ import requests
 import json
 
 app = Flask(__name__)
-@app.route("/")
-def home():
-    return render_template("feed.html")
-
 
 @app.errorhandler(400)
 def bad_request(e):
@@ -89,7 +85,7 @@ def edicion_refugio(id):
             "link_foto": foto
         }
         datos_json = json.dumps(datos)
-        URL = "http://pedrogillen.pythonanywhere.com/refugios/"+id #completar url con la direccion donde corre su api local
+        URL = "http://pedrogillen.pythonanywhere.com/refugios/"+id
         res = requests.patch(URL, data=datos_json, headers={'Content-Type': 'application/json'})
         if res.status_code == 200:
             return redirect(url_for('detalles_refugio', id=id))
@@ -99,24 +95,22 @@ def edicion_refugio(id):
 def edicion_voluntario(cuil):
     if request.method == "POST":
         nombre, puesto, telefono, cuil_vol, foto, refugio = data_return("voluntario")
-        URL = "http://pedrogillen.pythonanywhere.com/modificar_voluntario/" + cuil_vol
-        token = request.form.get("ftoken")
+        URL = "http://pedrogillen.pythonanywhere.com/modificar_voluntario/" + cuil
         datos = {
             "nombre": nombre,
             "puesto": puesto,
             "telefono": telefono,
-            'cuil_voluntario': cuil_vol,
+            'cuil_voluntario': cuil,
             'foto': foto,
             'nombre_refugio': refugio,
-            'token': token
         }
         res = requests.patch(URL, data=json.dumps(datos), headers={'Content-Type': 'application/json'})
-        return redirect(url_for('detalles_voluntario', cuil=cuil_vol))
+        return redirect(url_for('detalles_voluntario', cuil=cuil))
     return render_template("editar_voluntario.html", cuil=cuil)
 
 @app.route("/detalles_voluntario/<cuil>")
 def detalles_voluntario(cuil):
-    URL = "http://pedrogillen.pythonanywhere.com/obtener_voluntario/" + cuil #completar url con la direccion donde corre su api local
+    URL = "http://pedrogillen.pythonanywhere.com/obtener_voluntario/" + cuil
     res = requests.get(URL)
     data = json.loads(res.text)
     datos = data['data']
@@ -124,16 +118,16 @@ def detalles_voluntario(cuil):
 
 @app.route("/detalles_refugio/<id>")
 def detalles_refugio(id):
-    URL = "http://pedrogillen.pythonanywhere.com/obtener_refugio/" + id #completar url con la direccion donde corre su api local
+    URL = "http://pedrogillen.pythonanywhere.com/obtener_refugio/" + id
     res = requests.get(URL)
     data = json.loads(res.text)
     refugio = data['data_refugio']
     voluntarios = data['voluntarios']
     return render_template("detalles_refugio.html", refugio=refugio, voluntarios=voluntarios)
 
-@app.route("/feed")
+@app.route("/")
 def feed():
-    URL = "http://pedrogillen.pythonanywhere.com/obtener_refugios" #completar url con la direccion donde corre su api local
+    URL = "http://pedrogillen.pythonanywhere.com/obtener_refugios"
     result = requests.get(URL)
     refugios = json.loads(result.text)
     return render_template("feed.html", refugios=refugios)
@@ -151,7 +145,7 @@ def cargar_refugio():
             "link_foto": foto
         }
         datos_json = json.dumps(datos)
-        URL = "http://pedrogillen.pythonanywhere.com/crear_refugio" #completar url con la direccion donde corre su api local
+        URL = "http://pedrogillen.pythonanywhere.com/crear_refugio"
         result = requests.post(URL, data=datos_json, headers={'Content-Type': 'application/json'})
         return redirect("/feed")
     return render_template("cargar_refugio.html")
@@ -159,8 +153,6 @@ def cargar_refugio():
 
 @app.route("/mapa")
 def mapa():
-    # TO DO: Aca iria una llamada a la API para leer todos los refugios de la base de datos,
-    # convertirlos a geojson y pasarle ese geojson a el mapa, de momento ese geojson esta hardcodeado.
     return render_template("mapa.html")
 
 
